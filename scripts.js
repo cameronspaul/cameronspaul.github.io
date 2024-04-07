@@ -68,7 +68,8 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 let points = [];
-const numPoints = 100;
+let isMobile = false; // Declare isMobile as a global variable
+
 const maxDistance = 100;
 const lineColor = 'rgba(255, 255, 255, 0.3)';
 const pointColor = 'rgba(255, 255, 255, 0.3)';
@@ -77,6 +78,11 @@ function init() {
     // Adjust canvas size to match page
     canvas.width = document.body.offsetWidth;
     canvas.height = document.body.offsetHeight;
+
+    // Set the number of points based on the device type
+    const numPoints = isMobile ? 50 : 100;
+
+    points = []; // Clear existing points array
 
     for (let i = 0; i < numPoints; i++) {
         points.push({
@@ -128,9 +134,13 @@ function animate() {
     }
 }
 
+// Check if it's a mobile device
+isMobile = window.matchMedia("(max-width: 600px)").matches;
+
 init();
 
 window.addEventListener('resize', init);
+
 
 
 document.addEventListener("DOMContentLoaded", function() {

@@ -215,10 +215,10 @@ header.main-header::before {
 
 
     .swiper-wrapper {
-        display: block; /* Change display property to block */
-        justify-content: initial; /* Reset justify-content */
-        align-items: initial; /* Reset align-items */
-        flex-wrap: nowrap; /* Reset flex-wrap */
+        display: block;
+        justify-content: initial;
+        align-items: initial;
+        flex-wrap: nowrap;
     }
 }
 

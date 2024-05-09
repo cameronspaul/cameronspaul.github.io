@@ -11,6 +11,16 @@ body {
     padding: 0;
     font-family: 'Montserrat', sans-serif; /* Specify the Montserrat font */
     background: radial-gradient(circle at top, #2e323b, #0b0f1a); /* Change colors as needed */
+    
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 .title {
@@ -30,7 +40,14 @@ body {
     margin: 0 auto; /* Center the container horizontally */
     font-size: 18px;
     color: #fff;
+    
 } 
+
+
+.intro-container video {
+    width: 30%; /* Change the width to 50% */
+    padding-bottom: 10%;
+  }
 
 .container {
     display: flex;
@@ -40,8 +57,6 @@ body {
 }
 
 .panel {
-    width: 100px; /* Adjusted width for panels to 100px */
-    height: 100px; /* Adjusted height for panels to 100px */
     background: linear-gradient(to top, #cecece, #dddddd); /* Subtle gradient */
     border-radius: 10px;
     margin: 10px;
@@ -51,6 +66,7 @@ body {
     opacity: 0;
     transform: translateY(-50px);
 }
+
 
 .panel:hover {
     transform: translateY(-10px) scale(1.1); /* Adjust X translation as needed */
@@ -80,10 +96,37 @@ body {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+.tier1 {
+    width: 350px; /* Adjusted width for Tier 2 panel */
+    height: auto; /* Adjusted height for Tier 2 panel */
+}
 .tier2 {
     width: 350px; /* Adjusted width for Tier 2 panel */
-    height: 550px; /* Adjusted height for Tier 2 panel */
+    height: auto; /* Adjusted height for Tier 2 panel */
+    
 }
+
+
+.best-value-banner {
+    position: absolute;
+    top: -15px; /* Adjust as needed to place the banner at the desired position */
+    right: -15px; /* Adjust as needed to place the banner at the desired position */
+    background-color: #12ae95; /* Background color of the banner */
+    color: #fff; /* Text color of the banner */
+    padding: 5px 10px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 18px; /* Font size of the text */
+}
+
+
+
+.tier3 {
+    width: 350px; /* Adjusted width for Tier 2 panel */
+    height: auto; /* Adjusted height for Tier 2 panel */
+}
+
+
+
 
 header.main-header {
     position: relative; /* Add position relative */
@@ -150,16 +193,42 @@ header.main-header::before {
 
 
 
-.swiper-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; /* Ensures items wrap properly */
+.about-section {
+   
+    color: #fff; /* Text color for the about section */
+    padding: 20px; /* Padding around the content */
+    margin: 20px auto; /* Center the about section horizontally */
+    max-width: 800px; /* Limit the width of the about section */
+    
+
+}
+
+.about-section h2 {
+    font-size: 24px; /* Heading font size */
+    margin-bottom: 10px; /* Bottom margin for the heading */
+}
+
+.about-section p {
+    font-size: 18px; /* Paragraph font size */
+    line-height: 1.5; /* Line height for better readability */
+    margin-bottom: 15px; /* Bottom margin for paragraphs */
 }
 
 
 
-@media (max-width: 600px) {
+
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Adjust margin as needed */
+}
+  
+
+
+
+@media (max-width: 768px) {
     /* Adjustments for mobile devices */
     .title {
         scale: 70%;
@@ -177,12 +246,18 @@ header.main-header::before {
         font-size: 14px; /* Decrease intro text font size for smaller screens */
     }
 
-    .container {
-        height: auto; /* Set height to auto for smaller screens */
-    }
+    .intro-container video {
+        width: 80%; /* Change the width to 50% */
+      }
+
+
+    .carousel {
+        display: block;
+      }
 
     .panel {
         width: 80%; /* Adjust panel width for smaller screens */
+        align-items: initial;
     }
 
     .main-header {
@@ -213,13 +288,12 @@ header.main-header::before {
         font-size: 16px; /* Decrease font size for exciting text for smaller screens */
     }
 
-
-    .swiper-wrapper {
-        display: block;
-        justify-content: initial;
-        align-items: initial;
-        flex-wrap: nowrap;
+    :focus {
+        outline: none;
     }
+
+
+
 }
 
 

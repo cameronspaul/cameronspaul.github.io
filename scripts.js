@@ -1,4 +1,3 @@
-// scripts.js
 document.addEventListener("DOMContentLoaded", function() {
     const panels = document.querySelectorAll(".panel");
 
@@ -18,47 +17,52 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     const panels = document.querySelectorAll(".panel");
 
-    panels.forEach(panel => {
-        panel.addEventListener("mouseover", function() {
-            const tier = panel.classList.contains("tier1") ? 1 : (panel.classList.contains("tier2") ? 2 : 3);
-            switch(tier) {
-                case 1:
-                    panel.style.transform = "translateY(-10px) scale(1.1)";
-                    panels.forEach(otherPanel => {
-                        if (otherPanel !== panel) {
-                            otherPanel.style.transform = "translateX(50px)";
-                        }
-                    });
-                    break;
-                case 2:
-                    panel.style.transform = "translateY(-10px) scale(1.1)";
-                    panels.forEach(otherPanel => {
-                        if (otherPanel !== panel) {
-                            if (otherPanel.classList.contains("tier1")) {
-                                otherPanel.style.transform = "translateX(-60px)";
-                            } else if (otherPanel.classList.contains("tier3")) {
-                                otherPanel.style.transform = "translateX(60px)";
-                            }
-                        }
-                    });
-                    break;
-                case 3:
-                    panel.style.transform = "translateY(-10px) scale(1.1)";
-                    panels.forEach(otherPanel => {
-                        if (otherPanel !== panel) {
-                            otherPanel.style.transform = "translateX(-50px)";
-                        }
-                    });
-                    break;
-            }
-        });
+    // Check if it's a mobile device
+    const isMobile = window.matchMedia("(max-width: 600px)").matches;
 
-        panel.addEventListener("mouseout", function() {
-            panel.style.transform = "translateY(0) scale(1)";
-            panels.forEach(otherPanel => {
-                otherPanel.style.transform = "translateX(0)";
+    panels.forEach(panel => {
+        if (!isMobile) { // Check if it's not a mobile device
+            panel.addEventListener("mouseover", function() {
+                const tier = panel.classList.contains("tier1") ? 1 : (panel.classList.contains("tier2") ? 2 : 3);
+                switch(tier) {
+                    case 1:
+                        panel.style.transform = "translateY(-10px) scale(1.1)";
+                        panels.forEach(otherPanel => {
+                            if (otherPanel !== panel) {
+                                otherPanel.style.transform = "translateX(50px)";
+                            }
+                        });
+                        break;
+                    case 2:
+                        panel.style.transform = "translateY(-10px) scale(1.1)";
+                        panels.forEach(otherPanel => {
+                            if (otherPanel !== panel) {
+                                if (otherPanel.classList.contains("tier1")) {
+                                    otherPanel.style.transform = "translateX(-60px)";
+                                } else if (otherPanel.classList.contains("tier3")) {
+                                    otherPanel.style.transform = "translateX(60px)";
+                                }
+                            }
+                        });
+                        break;
+                    case 3:
+                        panel.style.transform = "translateY(-10px) scale(1.1)";
+                        panels.forEach(otherPanel => {
+                            if (otherPanel !== panel) {
+                                otherPanel.style.transform = "translateX(-50px)";
+                            }
+                        });
+                        break;
+                }
             });
-        });
+
+            panel.addEventListener("mouseout", function() {
+                panel.style.transform = "translateY(0) scale(1)";
+                panels.forEach(otherPanel => {
+                    otherPanel.style.transform = "translateX(0)";
+                });
+            });
+        }
     });
 });
 
@@ -140,19 +144,3 @@ isMobile = window.matchMedia("(max-width: 600px)").matches;
 init();
 
 window.addEventListener('resize', init);
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Check if it's a mobile device
-    const isMobile = window.matchMedia("(max-width: 600px)").matches;
-
-    if (isMobile) {
-        // Initialize Swiper
-        const swiper = new Swiper(".swiper-container", {
-            slidesPerView: "auto",
-            spaceBetween: 20,
-            loop: false,
-        });
-    }
-});

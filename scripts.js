@@ -138,6 +138,22 @@ function animate() {
     }
 }
 
+
+function copyText(text) {
+    // Create a dummy textarea element to hold the text temporarily
+    var dummy = document.createElement("textarea");
+    // Set its value to the text that needs to be copied
+    dummy.value = text;
+    // Append the dummy textarea to the body
+    document.body.appendChild(dummy);
+    // Select the text in the textarea
+    dummy.select();
+    // Execute the copy command
+    document.execCommand("copy");
+    // Remove the dummy textarea from the body
+    document.body.removeChild(dummy);
+  }
+
 // Check if it's a mobile device
 isMobile = window.matchMedia("(max-width: 600px)").matches;
 

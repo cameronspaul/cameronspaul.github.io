@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif; /* Specify the Montserrat font */
-    background: radial-gradient(circle at top, #2e323b, #0b0f1a); /* Change colors as needed */
+    background: radial-gradient(circle at top, #2e323b, #171f35); /* Change colors as needed */
     
 }
 
@@ -216,8 +216,6 @@ header.main-header::before {
 
 
 
-
-
 .carousel {
     display: flex;
     justify-content: center;
@@ -225,6 +223,13 @@ header.main-header::before {
     margin-top: 20px; /* Adjust margin as needed */
 }
   
+
+
+
+
+
+
+
 
 
 
@@ -294,7 +299,85 @@ header.main-header::before {
 
 
 
+    .features-table {
+        margin: 0 auto; /* Centers the table horizontally */
+        width: 80%; /* Adjusts the width of the table */
+    }
+    
+    .features-table th, .features-table td {
+        padding: 1px; /* Reduce padding to 1px */
+        font-size: 12px; /* Decrease font size to 8px */
+        text-align: center;
+    }
+    .btn-table {
+        padding: 1px; /* Reduce padding to 1px */
+        min-width: 10px;
+        font-size: 5px;
+    }
+    
 }
 
 
 
+.features-table {
+    font-family: 'Montserrat', sans-serif; /* Inherit font from body */
+    display: flex;
+    justify-content: center;
+    color: #fff;
+}
+
+.features-table table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    min-width: 400px;
+    color: #fff;
+}
+
+.features-table th, .features-table td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 24px;
+    color: #fff;
+}
+
+.features-table th {
+    background-color: #f2f2f2;
+    color: #000;
+}
+
+.features-table td {
+    vertical-align: middle;
+}
+
+.features-table tr.background {
+    background-color: rgb(26, 26, 26); /* 20% white opacity */
+}
+
+.features-table tr.no-background {
+    background-color: transparent; /* No background color */
+    border: none; /* No border */
+}
+
+.features-table tr.no-background td {
+    border: none; /* No border for cells */
+}
+
+
+
+.btn-table {
+    font-family: 'Montserrat', sans-serif; /* Inherit font from body */
+    background-color: #12ae95;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* Ensures button takes up full width */
+    margin: 0 auto; /* Centers the button horizontally */
+}
+
+.btn-table:hover {
+    background-color: #005555;
+}

@@ -222,14 +222,35 @@ header.main-header::before {
     align-items: center;
     margin-top: 20px; /* Adjust margin as needed */
 }
+
+
+
   
+.about-section {
+    animation: fade-in 2.5s forwards;
+  }
 
+.intro-container {
+    animation: fade-in 1.9s forwards;
+  }
 
+.title {
+    animation: fade-in 1.5s forwards;
+  }
 
+.logo {
+    animation: fade-in 0.3s forwards;
+  }
 
-
-
-
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
 
 

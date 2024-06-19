@@ -139,6 +139,8 @@ function animate() {
 }
 
 
+
+
 function copyText(text) {
     // Create a dummy textarea element to hold the text temporarily
     var dummy = document.createElement("textarea");

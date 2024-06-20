@@ -44,11 +44,6 @@ body, html {
 } 
 
 
-.intro-container video {
-    width: 30%; /* Change the width to 50% */
-    padding-bottom: 10%;
-  }
-
 .container {
     display: flex;
     justify-content: center;
@@ -224,6 +219,27 @@ header.main-header::before {
 }
 
 
+
+.about-section-container {
+    background-color: rgb(26, 26, 26); /* 20% white opacity */
+    padding: 10px 0; /* Adjust the top and bottom padding as needed */
+}
+
+.video-container {
+    background-color: rgb(26, 26, 26); /* 20% white opacity */
+    padding: 10px 0; /* Adjust the top and bottom padding as needed */
+    text-align: center;
+    margin: 0 auto; /* Center the container horizontally */
+    font-size: 18px;
+    color: #fff;
+    
+} 
+
+
+.video-container video {
+    width: 30%; /* Change the width to 50% */
+    padding-bottom: 10%;
+  }
 
   
 .about-section {

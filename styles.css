@@ -1,420 +1,376 @@
-/* Added CSS for canvas */
-#canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1; /* Ensure canvas is behind other content */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 body {
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif; /* Specify the Montserrat font */
-    background: radial-gradient(circle at top, #2e323b, #171f35); /* Change colors as needed */
-    
+    background: linear-gradient(135deg, #00020e, #2b2f38);
+    color: #333;
+    animation: fadeIn 0.9s ease-in-out;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    overflow-y: auto; /* Allow vertical scrolling */
-}
-
-.title {
-    text-align: center;
+header {
+    font-size: larger;
     color: #fff;
-    font-size: 68px;
-}
-
-.logo {
-    width: 150px;
-    height: 150px;
-    margin-right: 10px;
-}
-
-.intro-container {
-    text-align: center;
-    margin: 0 auto; /* Center the container horizontally */
-    font-size: 18px;
-    color: #fff;
-    
-} 
-
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh; /* Adjusted height */
-}
-
-.panel {
-    background: linear-gradient(to top, #cecece, #dddddd); /* Subtle gradient */
-    border-radius: 10px;
-    margin: 10px;
-    padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(-50px);
-}
-
-
-.panel:hover {
-    transform: translateY(-10px) scale(1.1); /* Adjust X translation as needed */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.panel .btn {
-    font-family: 'Montserrat', sans-serif; /* Inherit font from body */
-    background-color: #12ae95;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block; /* Ensures button takes up full width */
-    margin: 0 auto; /* Centers the button horizontally */
-}
-
-.panel .btn:hover {
-    background-color: #005555;
-}
-
-.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.tier1 {
-    width: 350px; /* Adjusted width for Tier 2 panel */
-    height: auto; /* Adjusted height for Tier 2 panel */
-}
-.tier2 {
-    width: 350px; /* Adjusted width for Tier 2 panel */
-    height: auto; /* Adjusted height for Tier 2 panel */
-    
-}
-
-
-.best-value-banner {
-    position: absolute;
-    top: -15px; /* Adjust as needed to place the banner at the desired position */
-    right: -15px; /* Adjust as needed to place the banner at the desired position */
-    background-color: #12ae95; /* Background color of the banner */
-    color: #fff; /* Text color of the banner */
-    padding: 5px 10px; /* Padding around the text */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 18px; /* Font size of the text */
-}
-
-
-
-.tier3 {
-    width: 350px; /* Adjusted width for Tier 2 panel */
-    height: auto; /* Adjusted height for Tier 2 panel */
-}
-
-
-
-
-header.main-header {
-    position: relative; /* Add position relative */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 20px;
-    z-index: 1; /* Ensure header is on top */
-    margin-bottom: -100px;
-}
-
-header.main-header::before {
-    content: "";
-    position: absolute;
-    inset: -10px 0 0 0; /* Adjusted to finish 10px above the webpage */
-    z-index: -1;
-    background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.07)); /* Creates a transparent to black gradient */
-    filter: blur(10px); /* Applies blur effect */
-}
-
-.main-header .logo {
-    width: 80px; /* Adjusted logo size */
-    height: 80px; /* Adjusted logo size */
-}
-
-.main-header nav a img {
-    width: 40px; /* Adjusted size for nav icons */
-    height: 40px; /* Adjusted size for nav icons */
+    padding: 1rem 0;
+    background: linear-gradient(135deg, #00020e, #2b2f38);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    animation: fadeIn 0.4s ease-in-out 0.05s both;
 }
 
 .header-content {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    animation: fadeIn 0.4s ease-in-out 0.1s both;
 }
 
-.btn-header {
+header .logo {
+    display: flex;
+    align-items: center;
+    animation: fadeIn 0.4s ease-in-out 0.15s both;
+}
+
+header .logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    animation: fadeIn 0.4s ease-in-out 0.2s both;
+}
+
+nav {
+    flex-grow: 1;
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out 0.25s both;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    animation: fadeIn 0.4s ease-in-out 0.3s both;
+}
+
+.header-right p {
+    margin: 0 20px 0 0;
+    color: #fff;
+    font-size: 0.9em;
+}
+
+.header-right .highlight {
+    color: #12ae95;
+    font-weight: bold;
+}
+
+.header-right .cta-button {
     background-color: #12ae95;
     color: #fff;
-    border: none;
-    padding: 15px 30px; /* Increase padding for bigger size */
+    padding: 8px 15px;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 16px; /* Increase font size for bigger text */
-    text-decoration: none; /* This removes the underline */
+    font-size: 0.9em;
 }
 
-.btn-header:hover {
-    background-color: #005555;
+.header-right .highlight {
+    color: #12ae95;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.free-tries {
+.intro {
     color: #fff;
-    font-size: 16px;
-    margin-right: 10px; /* Add space between button and free tries text */
-}
-
-.exciting-text {
-    color: #12ae95; /* Change to a vibrant color */
-    font-weight: bold; /* Make the text bold */
-    font-size: 20px; /* Increase font size */
-    text-transform: uppercase; /* Convert text to uppercase */
-}
-
-
-
-.about-section {
-   
-    color: #fff; /* Text color for the about section */
-    padding: 20px; /* Padding around the content */
-    margin: 20px auto; /* Center the about section horizontally */
-    max-width: 800px; /* Limit the width of the about section */
-    
-
-}
-
-.about-section h2 {
-    font-size: 24px; /* Heading font size */
-    margin-bottom: 10px; /* Bottom margin for the heading */
-}
-
-.about-section p {
-    font-size: 18px; /* Paragraph font size */
-    line-height: 1.5; /* Line height for better readability */
-    margin-bottom: 15px; /* Bottom margin for paragraphs */
-}
-
-
-
-.carousel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; /* Adjust margin as needed */
-}
-
-
-
-.about-section-container {
-    background-color: rgb(26, 26, 26); /* 20% white opacity */
-    padding: 10px 0; /* Adjust the top and bottom padding as needed */
-}
-
-.video-container {
-    background-color: rgb(26, 26, 26); /* 20% white opacity */
-    padding: 10px 0; /* Adjust the top and bottom padding as needed */
     text-align: center;
-    margin: 0 auto; /* Center the container horizontally */
-    font-size: 18px;
-    color: #fff;
-    
-} 
-
-
-.video-container video {
-    width: 30%; /* Change the width to 50% */
-    padding-bottom: 10%;
-  }
-
-  
-.about-section {
-    animation: fade-in 2.5s forwards;
-  }
-
-.intro-container {
-    animation: fade-in 1.9s forwards;
-  }
-
-.title {
-    animation: fade-in 1.5s forwards;
-  }
-
-.logo {
-    animation: fade-in 0.3s forwards;
-  }
-
-  
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-
-
-@media (max-width: 768px) {
-    /* Adjustments for mobile devices */
-    .title {
-        scale: 70%;
-        margin-top: 50px; /* Add space above the title */
-        margin-bottom: 10px; /* Add space below the title (optional) */
-    }
-    .logo {
-        width: 150px;
-        height: 150px;
-        margin-right: -70px;
-        margin-bottom: -26px;
-    }
-
-    .intro-container {
-        font-size: 14px; /* Decrease intro text font size for smaller screens */
-    }
-
-    .intro-container video {
-        width: 80%; /* Change the width to 50% */
-      }
-
-
-    .carousel {
-        display: block;
-      }
-
-    .panel {
-        width: 80%; /* Adjust panel width for smaller screens */
-        align-items: initial;
-    }
-
-    .main-header {
-        padding: 10px 10px; /* Adjust header padding for smaller screens */
-        margin-bottom: -50px; /* Adjust margin bottom for smaller screens */
-    }
-
-    .main-header .logo {
-        width: 60px; /* Adjust logo size for smaller screens */
-        height: 60px; /* Adjust logo size for smaller screens */
-    }
-
-    .main-header nav a img {
-        width: 30px; /* Adjust nav icon size for smaller screens */
-        height: 30px; /* Adjust nav icon size for smaller screens */
-    }
-
-    .btn-header {
-        padding: 10px 20px; /* Adjust button padding for smaller screens */
-        font-size: 14px; /* Decrease button font size for smaller screens */
-    }
-
-    .free-tries {
-        font-size: 14px; /* Decrease font size for free tries text for smaller screens */
-    }
-
-    .exciting-text {
-        font-size: 16px; /* Decrease font size for exciting text for smaller screens */
-    }
-
-    :focus {
-        outline: none;
-    }
-
-
-
-    .features-table {
-        margin: 0 auto; /* Centers the table horizontally */
-        width: 80%; /* Adjusts the width of the table */
-    }
-    
-    .features-table th, .features-table td {
-        padding: 1px; /* Reduce padding to 1px */
-        font-size: 12px; /* Decrease font size to 8px */
-        text-align: center;
-    }
-    .btn-table {
-        padding: 1px; /* Reduce padding to 1px */
-        min-width: 10px;
-        font-size: 5px;
-    }
-    
+    padding: 100px 20px;
+    animation: fadeIn 0.4s ease-in-out 0.35s both;
 }
 
-
-
-.features-table {
-    font-family: 'Montserrat', sans-serif; /* Inherit font from body */
-    display: flex;
-    justify-content: center;
-    color: #fff;
+.intro h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
 }
 
-.features-table table {
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 16px;
-    min-width: 400px;
-    color: #fff;
+.intro p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
 }
 
-.features-table th, .features-table td {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 24px;
-    color: #fff;
-}
-
-.features-table th {
-    background-color: #f2f2f2;
-    color: #000;
-}
-
-.features-table td {
-    vertical-align: middle;
-}
-
-.features-table tr.background {
-    background-color: rgb(26, 26, 26); /* 20% white opacity */
-}
-
-.features-table tr.no-background {
-    background-color: transparent; /* No background color */
-    border: none; /* No border */
-}
-
-.features-table tr.no-background td {
-    border: none; /* No border for cells */
-}
-
-
-
-.btn-table {
-    font-family: 'Montserrat', sans-serif; /* Inherit font from body */
+.cta-button {
     background-color: #12ae95;
     color: #fff;
-    border: none;
     padding: 10px 20px;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
-    display: block; /* Ensures button takes up full width */
-    margin: 0 auto; /* Centers the button horizontally */
 }
 
-.btn-table:hover {
+.cta-button:hover {
     background-color: #005555;
+}
+
+
+
+
+#tiers {
+    padding: -50px 20px;
+    text-align: center;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tier-header {
+    color: #fff;
+    text-align: center;
+    animation: fadeIn 0.38s ease-in-out 0.4s both;
+    margin-bottom: 60px;
+}
+
+.tier {
+    background: linear-gradient(to top, #dfdfdf, #ffffff);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 20px;
+    display: inline-block;
+    width: calc(25% - 40px);
+    vertical-align: top;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Ensure tiers have consistent height */
+#tiers .tier {
+    height: 100%;
+}
+
+#tier1 {
+    animation: fadeIn 0.4s ease-in-out 0.4s both;
+}
+
+#tier2 {
+    margin-top: -25px;
+    animation: fadeIn 0.44s ease-in-out 0.44s both;
+}
+
+#tier3 {
+    animation: fadeIn 0.42s ease-in-out 0.42s both;
+}
+
+
+
+
+
+/* Additional styles remain unchanged */
+.tier h1 {
+    color: #12ae95;
+}
+
+.tier ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.tier ul li {
+    margin: 10px 0;
+}
+
+.tier .price {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+
+
+
+#about {
+    background: linear-gradient(to top, #dfdfdf, #ffffff);
+    padding: 50px 20px;
+    text-align: justify; /* Justify text for even spacing */
+    animation: fadeIn 0.4s ease-in-out 0.5s both;
+}
+
+#about h2, #about p {
+    padding-left: 200px; /* Left indent */
+    padding-right: 200px; /* Right indent */
+    text-align: center; /* Center the text */
+}
+
+
+
+.compare-header {
+    color: #fff;
+    text-align: center;
+    animation: fadeIn 0.38s ease-in-out 0.4s both;
+    margin-top: 60px;
+    margin-bottom: -60px;
+  }
+
+
+#compare {
+    padding: 50px 20px;
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out 0.55s both;
+}
+
+table {
+    transition: transform 0.3s;
+    width: 80%;
+    border-collapse: separate; /* Use separate to allow for individual border-radius */
+    border-spacing: 0; /* Ensures no extra space between cells */
+    margin: 40px auto;
+    background: linear-gradient(to top, #dfdfdf, #ffffff);
+    animation: fadeIn 0.4s ease-in-out 0.6s both;
+    border-radius: 15px; /* Add rounded corners to the table */
+    overflow: hidden; /* Ensures the rounded corners are properly applied */
+}
+
+thead {
+    background-color: #12ae95;
+    color: #fff;
+}
+
+thead th {
+    padding: 10px;
+}
+
+tbody td {
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Set a semi-transparent border */
+}
+
+tbody td:first-child {
+    border-left: none; /* Ensure first column has no left border */
+}
+
+tbody td:last-child {
+    border-right: none; /* Ensure last column has no right border */
+}
+
+tbody tr:last-child td {
+    border-bottom: none; /* Ensure last row has no bottom border */
+}
+
+tbody tr:first-child td {
+    border-top: none; /* Ensure first row has no top border */
+}
+
+
+#roadmap {
+    
+    margin-top: -40px;
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out 0.7s both;
+}
+
+.roadmap-header {
+    color: #fff;
+    font-size: 2.5em;
+    margin-bottom: 60px;
+    animation: fadeIn 0.4s ease-in-out 0.75s both;
+}
+
+.timeline {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.timeline-item {
+    transition: transform 0.3s;
+    width: 30%;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.4s ease-in-out both;
+}
+
+.timeline-content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: fadeIn 0.4s ease-in-out both;
+}
+
+.timeline-icon {
+    background: #12ae95;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeIn 0.4s ease-in-out both;
+}
+
+.timeline-item:nth-child(2) .timeline-icon {
+    background: #005555;
+}
+
+.timeline-item:nth-child(3) .timeline-icon {
+    background: #2b2f38;
+}
+
+.timeline h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    animation: fadeIn 0.4s ease-in-out both;
+}
+
+.timeline p {
+    color: #555;
+    animation: fadeIn 0.4s ease-in-out both;
+}
+
+
+
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    animation: fadeIn 0.4s ease-in-out 0.65s both;
 }

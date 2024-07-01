@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PulseTrackerSol - Solana Wallet Analyzer</title>
+    <title>Solana Wallet Analysis - PulseTracker</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -14,19 +15,23 @@
                 <img src="logo.png" alt="PulseTracker Logo">
                 <h1>PulseTracker</h1>
             </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <nav>
                 <ul>
-                    <li><a href="#tiers">Tiers</a></li>
+                    <li><a href="#plans">Our Plans</a></li>
+                    <li><a href="#bot-tools">Bot Tools</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#compare">Compare</a></li>
                     <li><a href="#roadmap">Roadmap</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#how-to-use">Example Usage</a></li>
-                    
+                    <li><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
             <div class="header-right">
-                <p>Get 5 <span class="highlight">FREE</span> checks!</p>
-                <a href="#get-started" class="cta-button">Use PulseTracker</a>
+                <a href="https://t.me/PulseTrackerSolAlpha_bot" class="cta-button">Use PulseTracker</a>
             </div>
         </div>
     </header>
@@ -35,169 +40,253 @@
         <div class="intro">
             <h2>Discover Profitable Solana Wallets Used by Successful Traders</h2>
             <p>Get all your analysis needs from PulseTracker!</p>
-            <a href="#tiers" class="cta-button">Get Started</a>
+            <div class="cta-wrapper">
+                <a href="https://t.me/pulsetrackeralpha" class="cta-button">Join the community!</a>
+                <div class="intro-social-links">
+                    <a href="https://x.com/PulseTrackerSol" target="_blank" class="social-icon twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://t.me/pulsetrackeralpha" target="_blank" class="social-icon telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <h1 class="tier-header">Our Tiers</h1>
-
-
-    <section id="tiers">
-        <div class="tier" id="tier1">
-            <h1>🌱 Tier 1: Basic Plan</h1>
-            <h3>🔍 Unlimited Wallet Checks + TG Group</h3>
+    <section id="plans" class="plan-container animate-on-scroll">
+        <div class="plan" id="plan-basic">
+            <h2>Basic</h2>
+            <h1>$34<span>/month</span></h1>
+            <ul>
+                <li><b>Unlimited Wallet Checks</b></li>
+                <li><b>Exclusive Telegram Group Access</b></li>
+            </ul>
             <p>Perfect for beginners who need basic wallet analysis and community support.</p>
-            <ul>
-                <li>🔍 Unlimited Checks - No limits on wallet analysis</li>
-                <li>📞 Exclusive Telegram Group Access - Connect with our community</li>
-            </ul>
-            <p class="price">$34</p>
-            <a href="#compare" class="cta-button">Don't Miss Out!</a>
+            <a href="#roadmap" class="plan-button">Coming Soon!</a>
         </div>
-
-        <div class="tier" id="tier2">
-            <span class="best-value-banner">FULL ACCESS</span>
-            <h1>🌳 Tier 3: Premium Plan</h1>
-            <h3>🏆 Full Access + Winning Wallets</h3>
-            <p>The ultimate package for advanced traders who want comprehensive insights and top trader analysis.</p>
+    
+        <div class="plan" id="plan-standard">
+            <h2>Pro</h2>
+            <h1>$44<span>/month</span></h1>
             <ul>
-                <li>🔍 Scan Multiple Wallets at once - Analyze multiple wallets simultaneously</li>
-                <li>🕵️‍♂️ Scan Top Traders from DEX Screener - Get insights from top traders</li>
-                <li>🏆 Daily Winning Wallets - Stay ahead with daily winning wallet updates</li>
+                <li><b>Range check up to 30 days</b></li>
+                <li><b>Excel Download</b></li>
+                <li><b>Token Quality Analysis</b></li>
             </ul>
-            <p class="price">$59</p>
-            <a href="#compare" class="cta-button">Get Started</a>
-        </div>
-
-        <div class="tier" id="tier3">
-            <h1>🌿 Tier 2: Standard Plan</h1>
-            <h3>🗂️ Trades Log Download + Custom Day Check</h3>
+            <ul>
+                <li class="small">Unlimited Wallet Checks</li>
+                <li class="small">Exclusive Telegram Group Access</li>
+            </ul>
             <p>Ideal for intermediate traders looking for detailed trade logs and token analysis.</p>
+            <a href="#roadmap" class="plan-button">Coming Soon!</a>
+        </div>
+    
+        <div class="plan" id="plan-premium">
+            <h2>Premium</h2>
+            <h1>$59<span>/month</span></h1>
             <ul>
-                <li>📊 Range check up to 30 days - Analyze trade history</li>
-                <li>📁 Excel Download - Export trade logs for further analysis</li>
-                <li>💎 Token Quality Analysis - Get insights into token performance</li>
+                <li><b>Scan Multiple Wallets at once</b></li>
+                <li><b>Scan Top Traders from DEX Screener</b></li>
+                <li><b>Daily Winning Wallets</b></li>
             </ul>
-            <p class="price">$44</p>
-            <a href="#compare" class="cta-button">Get Started</a>
+            <ul>
+                <li class="small">Unlimited Wallet Checks</li>
+                <li class="small">Exclusive Telegram Group Access</li>
+                <li class="small">Range check up to 30 days</li>
+                <li class="small">Excel Download</li>
+                <li class="small">Token Quality Analysis</li>
+            </ul>
+            <p>The ultimate package for advanced traders who want comprehensive insights and top trader analysis.</p>
+            <a href="#roadmap" class="plan-button">Coming Soon!</a>
         </div>
     </section>
 
-    <section id="about">
-        <h2>About PulseTracker</h2>
-        <p>PulseTracker is a revolutionary tool designed to help cryptocurrency investors identify profitable wallets used by successful traders. Our advanced bot can detect insider trading without affecting the wallets' stats, providing you with invaluable insights for informed decision-making.</p>
-        <p>With PulseTracker, you gain access to a community of savvy investors, daily winning wallet insights, and unlimited usage of our bot for comprehensive analysis. Join us today and elevate your crypto investment strategy!</p>
+
+
+    <h1 class="titles">Bot Tools</h1>
+    <section id="bot-tools" class="animate-on-scroll">
+    <div class="tool-container">
+        <div class="tool-left-panel" id="tool-left-panel">
+            <!-- Tool buttons and content will be inserted here -->
+        </div>
+        <div class="tool-right-panel">
+            <div id="tool-video-container">
+                <!-- Video will be inserted here -->
+            </div>
+        </div>
+    </div>
     </section>
 
-    <h1 class="compare-header">Compare Our Tiers</h1>
-    <section id="compare">
+
+
+    <h1 class="titles">About PulseTracker</h1>
+
+    <section id="about" class="animate-on-scroll">
+        <h2>Introduction and Core Functionality</h2>
+        <p>PulseTracker is designed to help you find <strong>profitable</strong> wallets for copy trading. By identifying wallets with a <strong>successful</strong> trading history, it removes the guesswork from selecting tokens, offering you unparalleled insights into wallet performance.</p>
+        <p>By analyzing the key metrics of wallet <strong>performance</strong>, PulseTracker allows you to confidently follow wallets with <strong>strong</strong> trading attributes, enhancing your chances of making profitable trades.</p>
+    </section>
+    
+    <section id="about" class="animate-on-scroll">
+        <h2>Unique Features and Benefits</h2>
+        <p>PulseTracker stands out with its <strong>unique</strong> set of features, providing in-depth analysis and <strong>filtering</strong> trades that start and end within the same wallet. This ensures you see the complete transaction history per token, avoiding skewed results from free token distributions.</p>
+        <p>With PulseTracker, you can identify wallets that are genuinely <strong>profitable</strong> in the real world, making it a <strong>reliable</strong> tool for copy trading and boosting your trading confidence.</p>
+    </section>
+    
+    <section id="about" class="animate-on-scroll">
+        <h2>Overall Value Proposition</h2>
+        <p>Beyond copy trading, PulseTracker serves as a guideline for identifying successful wallets that <strong>excel</strong> in trade timing. You don't have to blindly copy them; instead, use their <strong>strategies</strong> as a reference to inform your own trading decisions.</p>
+        <p>By leveraging the insights provided by PulseTracker, you can <strong>enhance</strong> your trading strategy, find the right tokens, and make <strong>informed</strong> trades in the competitive Solana market.</p>
+    </section>
+    
+    
+
+
+
+    <h1 class="titles">Compare Our Tiers</h1>
+    <section id="compare" class="animate-on-scroll">
         <table>
             <thead>
                 <tr>
-                    <th>🔑 Features</th>
-                    <th>🌱 Tier 1 - $34</th>
-                    <th>🌿 Tier 2 - $44</th>
-                    <th>🌳 Tier 3 - $59</th>
+                    <th>Features</th>
+                    <th>Basic</th>
+                    <th>Pro</th>
+                    <th>Premium</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>🔍 Unlimited Checks</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                    <td>✅</td>
+                    <td>Access the latest PulseTracker Bot</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td>📞 Exclusive Telegram Group Access</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                    <td>✅</td>
+                    <td>Unlimited Checks</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td>📊 Range check up to 30 days</td>
-                    <td>❌</td>
-                    <td>✅</td>
-                    <td>✅</td>
+                    <td>Exclusive Telegram Group Access</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td>📁 Excel Download</td>
-                    <td>❌</td>
-                    <td>✅</td>
-                    <td>✅</td>
+                    <td>Range check up to 30 days</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td>💎 Token Quality Analysis</td>
-                    <td>❌</td>
-                    <td>✅</td>
-                    <td>✅</td>
+                    <td>Excel Download</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td>🔍 Scan Multiple Wallets at once</td>
-                    <td>❌</td>
-                    <td>❌</td>
-                    <td>✅</td>
+                    <td>Token Quality Analysis</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td>🕵️‍♂️ Scan Top Traders from DEX Screener</td>
-                    <td>❌</td>
-                    <td>❌</td>
-                    <td>✅</td>
+                    <td>Scan Multiple Wallets at once</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td>🏆 Daily Winning Wallets</td>
-                    <td>❌</td>
-                    <td>❌</td>
-                    <td>✅</td>
+                    <td>Scan Top Traders from DEX Screener</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>Daily Winning Wallets</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
                 </tr>
             </tbody>
         </table>
     </section>
 
-    <section id="roadmap">
-        <h1 class="roadmap-header">Roadmap</h1>
-        <div class="timeline-container">
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h2>Phase 1: Full Bot Launch and $PULSE Token Release</h2>
-                <p>Release the full bot alongside the launch of the $PULSE token.</p>
-                <div class="timeline-icon">
-                  <i class="fas fa-rocket"></i>
-                </div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h2>Phase 2: Wallet Notification and Tracking</h2>
-                <p>Implement wallet notification system and enable tracking of wallets.</p>
-                <div class="timeline-icon">
-                  <i class="fas fa-bell"></i>
-                </div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h2>Phase 3: Trading Bot and Copytrading</h2>
-                <p>Develop a trading bot capable of copytrading wallets, enabling automated buy and sell actions based on them.</p>
-                <div class="timeline-icon">
-                  <i class="fas fa-chart-line"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <h1 class="titles">Roadmap</h1>
 
-    <section id="how-to-use">
-    <div class="check-container">
-        <h2>See the Bot in Action!</h2>
-        <video controls autoplay loop width="30%" src="example.mp4" style="display: block; margin: 0 auto;"></video>
-    </div>
+    <section id="roadmap">
+        <div class="roadmap-wrapper">
+            <div class="roadmap-container roadmap-animate-on-scroll">
+                <div class="roadmap">
+                    <div class="phase">
+                        <h2>Q2 2024</h2>
+                        <p>Unveiling PulseTracker in its alpha stage. Community members can test all features for FREE, providing invaluable feedback.</p>
+                    </div>
+                    <div class="phase">
+                        <h2>Q3 2024</h2>
+                        <p>Official launch of PulseTracker with tiered access options and the debut of the $PULSE token, marking a new era of advanced bot capabilities.</p>
+                    </div>
+                    <div class="phase">
+                        <h2>Q4 2024</h2>
+                        <p>Introducing the Wallet Notification Bot. Users can now manage multiple wallets and receive real-time notifications for every transaction, including buys, sells, transfers, and burns.</p>
+                    </div>
+                    <div class="phase">
+                        <h2>Q1 2025</h2>
+                        <p>Expanding our reach with the PulseTrackerEth bot, designed exclusively for in-depth analysis of Ethereum wallets.</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
     </section>
+
+        <h1 class="titles">FAQs</h1>
+        <section id="faq">
+            <div class="faq animate-on-scroll">
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between the Basic, Pro, and Premium tiers?</div>
+                    <div class="faq-answer">Our tiers cater to different levels of trading experience and analysis needs. The Basic tier is perfect for beginners, offering unlimited wallet checks and community support. The Pro tier is ideal for intermediate traders, providing additional features like range checks and token quality analysis. The Premium tier is designed for advanced traders, offering comprehensive insights, multi-wallet analysis, and top trader analysis. Compare our tiers to find the best fit for you.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I get access to the Exclusive Telegram Group?</div>
+                    <div class="faq-answer">As a PulseTracker subscriber, you'll receive exclusive access to our Telegram group, where you can connect with other traders, ask questions, and get insights from our community. Once you've signed up for any of our tiers, you'll receive an invite link to join the group.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I try PulseTracker before committing to a subscription?</div>
+                    <div class="faq-answer">Absolutely! You can enjoy 3 free checks per day to explore the basic features of PulseTracker before committing to a subscription.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Will PulseTracker support other blockchain networks besides Solana?</div>
+                    <div class="faq-answer">Yes, we have plans to expand our reach to other blockchain networks. In Q1 2025, we'll be launching the PulseTrackerEth bot, designed exclusively for in-depth analysis of Ethereum wallets. Stay tuned for updates on our roadmap and future developments!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I get started with PulseTracker and access its features?</div>
+                    <div class="faq-answer">You can sign up for one of the tiered access options on the PulseTracker paybot on Telegram and gain access to exclusive features such as unlimited wallet checks, Excel downloads, token quality analysis, and more. Join the community and start improving your trading strategy today!</div>
+                </div>
+            </div>
+        </section>
+
+
 
 
     <footer>
-        <p>&copy; 2024 PulseTracker. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://x.com/PulseTrackerSol" target="_blank" class="social-icon twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://t.me/pulsetrackeralpha" target="_blank" class="social-icon telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 PulseTracker. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="scripts.js"></script>

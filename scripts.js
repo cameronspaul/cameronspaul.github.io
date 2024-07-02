@@ -17,9 +17,7 @@ function toggleMobileNav() {
       // If menu is visible, collapse it
       mobileNav.classList.remove('show');
       // Delay setting display to 'none' to allow transition to finish
-      setTimeout(() => {
-          mobileNav.style.display = 'none';
-      }, 300); // Match the transition duration
+
   } else {
       // If menu is not visible, show it
       mobileNav.style.display = 'flex';
@@ -30,6 +28,18 @@ function toggleMobileNav() {
   }
 }
 
+const mobileNav = document.querySelector('.mobile-nav');
+const hamburger = document.querySelector('.hamburger-menu');
+
+hamburger.addEventListener('click', () => {
+    if (mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        mobileNav.classList.add('close');
+    } else {
+        mobileNav.classList.remove('close');
+        mobileNav.classList.add('open');
+    }
+});
 
 // Attach event listeners to links
 document.addEventListener("DOMContentLoaded", function() {
@@ -205,7 +215,17 @@ const toolPanels = [
             <li><strong>Predict Future Value:</strong> Improve your investment strategy by analyzing successful token selections.</li>
         </ul>`,
         videoUrl: "tokenquality.mp4"
-    }
+    },
+    {
+        title: "Excel Sheet Data",
+        content: `Get unparalleled insights into wallet performance with our comprehensive Excel sheet data. With every single trade laid out in an easy-to-read format, you'll be able to:
+        <ul>
+          <li><strong>Uncover Trading Secrets:</strong> See the exact trades made by top-performing wallets, including profits and trade duration.</li>
+
+          <li><strong>Find the Perfect Wallet:</strong> Use our data to identify the most profitable wallets and inform your investment strategy.</li>
+        </ul>`,
+        videoUrl: "excel.mp4"
+      }
 ];
 
 function createToolPanels() {
@@ -295,5 +315,4 @@ createToolPanels();
 
 // Show the first tool panel and video by default
 toggleToolPanel(0);
-
 

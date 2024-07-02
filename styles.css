@@ -182,12 +182,6 @@ nav ul li a:active {
 }
 
 
-
-
-
-
-
-
 /* Existing styles */
 .hamburger-menu {
     display: none;
@@ -200,49 +194,97 @@ nav ul li a:active {
     background-color: white;
     margin: 4px 0;
 }
+
 /* Base styles for mobile-nav */
 .mobile-nav {
-    display: flex; /* Default to flex to ensure children are rendered */
+    display: flex;
     flex-direction: column;
     padding: 10px;
-    overflow: hidden; /* Hide overflow to smooth transitions */
-    max-height: 0; /* Initially collapsed */
-    opacity: 0; /* Initially hidden */
-    visibility: hidden; /* Hide visually */
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
 }
 
 /* Styles for when menu is visible */
-.mobile-nav.show {
-    max-height: 1000px; /* High enough to fit all content */
-    opacity: 1; /* Fully visible */
-    visibility: visible; /* Make visible */
+.mobile-nav.open {
+    max-height: 1000px;
+    opacity: 1;
+    visibility: visible;
+    transition: max-height 0.5s ease-in, opacity 0.3s ease-in, visibility 0.3s ease-in;
 }
+
+.mobile-nav.close {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
 .mobile-nav a {
     color: white;
     text-decoration: none;
-    font-size: 0.8em;
-    transition: all 0.2s ease-in-out;
+    font-size: 1.2em;
     padding: 8px 15px;
     border-radius: 10px;
     margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(0);
+    opacity: 1;
 }
+
+.mobile-nav.close a {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+/* Staggered animation for opening */
+.mobile-nav.open a:nth-child(1) { transition-delay: 0.18s; }
+.mobile-nav.open a:nth-child(2) { transition-delay: 0.15s; }
+.mobile-nav.open a:nth-child(3) { transition-delay: 0.12s; }
+.mobile-nav.open a:nth-child(4) { transition-delay: 0.09s; }
+.mobile-nav.open a:nth-child(5) { transition-delay: 0.06s; }
+.mobile-nav.open a:nth-child(6) { transition-delay: 0.03s; }
+.mobile-nav.open a:nth-child(7) { transition-delay: 0s; }
+/* Add more if you have more menu items */
+
 .mobile-nav a:hover {
-    font-size: 0.85em;
+    font-size: 1.1em;
     background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+
 .mobile-nav a:active {
     transform: translateY(0);
     box-shadow: none;
 }
 
+
 @media (max-width: 768px) {
+    header {
+        padding: 0.1rem 0; /* Reduce padding for mobile */
+    }
+
+    .header-content {
+        height: 50px; /* Reduce height for mobile */
+    }
+
+    header .logo img {
+        height: 40px; /* Reduce logo size for mobile */
+    }
+
+    header h1 {
+        font-size: 2em; /* Reduce font size for mobile */
+        line-height: 50px; /* Match new header-content height */
+    }
+
     .desktop-menu, .cta-button-header {
         display: none;
     }
+
     .hamburger-menu {
         display: flex;
     }
@@ -418,7 +460,7 @@ nav ul li a:active {
 
 .tool-left-panel {
     background: linear-gradient(to top, #dfdfdf, #ffffff);
-    min-width: calc(50% - 10px);
+    min-width: calc(40% - 10px);
     animation: fadeIn 0.5s ease-in-out 0.55s both;
     display: flex;
     flex-direction: column;

@@ -407,46 +407,45 @@ nav ul li a:active {
    }
 
 
+
 .tool-container {
-    height: 600px; /* Set the height for the container */
+    
     display: flex;
-    align-items: stretch; /* Ensure both child elements stretch to the container height */
-    width: 100%; /* Ensure the container takes up the full width of its parent */
-    box-sizing: border-box; /* Ensure padding is included in the width */
+    min-height: 800px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .tool-left-panel {
     background: linear-gradient(to top, #dfdfdf, #ffffff);
-    transition: transform 0.3s;
+    min-width: calc(50% - 10px);
     animation: fadeIn 0.5s ease-in-out 0.55s both;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     padding: 20px;
     border-radius: 15px;
-    width: calc(50% - 10px); /* Adjust width to 50% minus half of the gap */
+    width: calc(50% - 10px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    margin-right: 20px; /* Margin between the panels */
+    box-sizing: border-box;
+    margin-right: 20px;
 }
 
 .video-container {
-    display: flex;
-    flex-direction: column; /* Ensure video container contents are aligned vertically */
-    width: calc(50% - 20px); /* Adjust width to 50% minus the margin on the left panel */
-    padding: 20px; /* Add padding if necessary */
-    box-sizing: border-box; /* Ensure padding is included in the width */
+    width: calc(50% - 20px);
+    padding: 20px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center; /* Ensure the video container stretches to container height */
+    justify-content: center;
 }
 
 .tool-button {
     display: block;
-    width: 100%;
-    padding: 10px;
+    width: auto;
+    padding: 20px;
     margin: 0 0 10px 0;
-    background-color: #fff;
+    background: #fff;
     color: #333;
     border: none;
     cursor: pointer;
@@ -454,7 +453,8 @@ nav ul li a:active {
     border-radius: 15px;
     font-size: 28px;
     font-weight: bold;
-    transition: border-radius 0.3s, background-color 0.3s, color 0.3s;
+    transition: border-radius 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .tool-button.active {
@@ -462,7 +462,8 @@ nav ul li a:active {
     margin-bottom: 0;
     background-color: #12ae95;
     color: #fff;
-    cursor: default; /* This changes the cursor to indicate the button isn't clickable */
+    cursor: default;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .tool-button:hover {
@@ -479,33 +480,36 @@ nav ul li a:active {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
     line-height: 1.6;
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 .tool-content.active {
-    max-height: 1000px; /* Adjust this value based on your content */
+    max-height: 1000px;
     opacity: 1;
-    padding: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 #tool-video-container {
     border-radius: 15px;
-    width: 100%; /* Ensure it takes up the full width of its container */
-    height: 100%; /* Ensure it takes up the full height of its container */
+    width: 100%;
+    height: 100%; /* Ensure container takes up full height of its parent */
     transition: opacity 0.3s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 #tool-video-container video {
-    width: 100%; /* Ensure it scales properly within its container */
-    height: 100%; /* Ensure it scales properly within its container */
+    width: 100%; /* Ensure video width is 100% of the container */
+    height: 100%; /* Ensure video height is 100% of the container */
     border-radius: 15px;
+    object-fit: cover; /* Optional: Maintain aspect ratio and cover the container */
+    transition: opacity 0.5s ease;
 }
-
 
 
 
@@ -631,6 +635,7 @@ tbody tr:hover {
     width: 98vw;
     margin-left: calc(-49vw + 50%);
     background: inherit;
+    
 }
 
 .roadmap-container {
@@ -722,7 +727,12 @@ tbody tr:hover {
     }
 }
 
-
+@media screen and (max-width: 768px) {
+    .roadmap-container {
+        max-height: none;
+        overflow-y: visible;
+    }
+}
 
 
 
@@ -730,6 +740,7 @@ tbody tr:hover {
 .faq-item {
     margin: 20px auto;
     width: 100%;
+    overflow: hidden; /* Ensures smooth transition */
 }
 
 .faq-question {
@@ -738,7 +749,7 @@ tbody tr:hover {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: border-radius 0.3s ease;
+    transition: border-radius 0.3s ease, box-shadow 0.3s ease;
 }
 
 .faq-answer {
@@ -748,7 +759,8 @@ tbody tr:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    opacity: 0;
+    transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
 }
 
 .faq-item.active .faq-question {
@@ -759,11 +771,8 @@ tbody tr:hover {
 .faq-item.active .faq-answer {
     max-height: 1000px; /* Adjust this value based on your content */
     padding: 20px;
-    transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+    opacity: 1;
 }
-
-
-
 
 
 footer {
@@ -826,6 +835,7 @@ footer {
     }
 
     .tool-left-panel {
+        
         width: auto;
         margin-right: 0; /* Remove right margin on smaller screens */
     }

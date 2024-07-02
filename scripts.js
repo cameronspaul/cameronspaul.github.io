@@ -295,3 +295,5 @@ createToolPanels();
 
 // Show the first tool panel and video by default
 toggleToolPanel(0);
+
+

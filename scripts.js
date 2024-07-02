@@ -8,6 +8,29 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
+
+function toggleMobileNav() {
+  const mobileNav = document.getElementById('mobileNav');
+  
+  if (mobileNav.classList.contains('show')) {
+      // If menu is visible, collapse it
+      mobileNav.classList.remove('show');
+      // Delay setting display to 'none' to allow transition to finish
+      setTimeout(() => {
+          mobileNav.style.display = 'none';
+      }, 300); // Match the transition duration
+  } else {
+      // If menu is not visible, show it
+      mobileNav.style.display = 'flex';
+      // Use requestAnimationFrame to ensure layout is updated
+      requestAnimationFrame(() => {
+          mobileNav.classList.add('show');
+      });
+  }
+}
+
+
 // Attach event listeners to links
 document.addEventListener("DOMContentLoaded", function() {
     const isMobile = window.matchMedia("(max-width: 600px)").matches;
@@ -22,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
                 const headerOffset = document.querySelector('header').offsetHeight;
-                const additionalOffset = 120; // Add additional offset as needed
+                const additionalOffset = 40; // Add additional offset as needed
                 const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
                 const offsetPosition = elementPosition - headerOffset - additionalOffset;
 

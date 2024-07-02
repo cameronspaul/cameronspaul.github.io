@@ -15,6 +15,31 @@
     }
 }
 
+.titles {
+
+    background-clip: text;
+    color: #fff; /* Hide the text color */
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+
+
+.cta-button {
+    background: #12ae95;
+    background-size: 200% 100%;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #0b7968;
+
+}
+
 
 .animate-on-scroll {
     opacity: 0;
@@ -33,7 +58,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0 auto; /* Center the body horizontally */
     padding: 0;
-    max-width: 1200px;
+    max-width: 61%;
     background: linear-gradient(135deg, #00020e, #15171b, #00020e);
     background-size: 200% 200%;
     color: #333;
@@ -45,7 +70,7 @@ header {
     font-size: larger;
     color: #fff;
     padding: 1rem 0;
-    width: 100%;
+    width: auto;
     z-index: 1000;
     overflow: hidden;
     animation:
@@ -54,13 +79,29 @@ header {
     background-size: 200% 200%;
 }
 
+.cta-button-header {
+    background: #12ae95;
+    background-size: 200% 100%;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.cta-button-header:hover {
+    background: #0b7968;
+
+}
+
+
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: auto;
     margin: 0 auto;
-    padding: 0 20px;
+
     animation: fadeIn 0.4s ease-in-out 0.1s both;
     height: 60px; /* Set a fixed height for the header content */
 }
@@ -141,59 +182,77 @@ nav ul li a:active {
 }
 
 
-.menu-toggle {
+
+
+
+
+
+
+/* Existing styles */
+.hamburger-menu {
     display: none;
     flex-direction: column;
     cursor: pointer;
 }
-
-.bar {
+.hamburger-menu div {
     width: 25px;
     height: 3px;
     background-color: white;
-    margin: 3px 0;
-    transition: 0.4s;
+    margin: 4px 0;
+}
+/* Base styles for mobile-nav */
+.mobile-nav {
+    display: flex; /* Default to flex to ensure children are rendered */
+    flex-direction: column;
+    padding: 10px;
+    overflow: hidden; /* Hide overflow to smooth transitions */
+    max-height: 0; /* Initially collapsed */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Hide visually */
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-@media screen and (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
+/* Styles for when menu is visible */
+.mobile-nav.show {
+    max-height: 1000px; /* High enough to fit all content */
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Make visible */
+}
+.mobile-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8em;
+    transition: all 0.2s ease-in-out;
+    padding: 8px 15px;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+.mobile-nav a:hover {
+    font-size: 0.85em;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.mobile-nav a:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
 
-    nav {
+@media (max-width: 768px) {
+    .desktop-menu, .cta-button-header {
         display: none;
     }
-
-    nav.active {
+    .hamburger-menu {
         display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background-color: #333;
-        z-index: 9999; /* Increased z-index */
-        height: calc(100vh - 60px);
-        overflow-y: auto;
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
-
-    nav ul li {
-        text-align: center;
-    }
-
-    .header-right {
-        display: none;
     }
 }
+
 
 
 .intro {
     color: #fff;
-    padding: 50px 20px;
+    padding-top: 10px;
     animation: fadeIn 0.4s ease-in-out 0.35s both;
     max-width: 550px;
     margin-bottom: 60px; /* Adjust this value as needed */
@@ -227,6 +286,10 @@ nav ul li a:active {
 }
 
 
+
+
+
+
 .plan-container {
     transition: transform 0.3s;
     animation: fadeIn 0.48s ease-in-out 0.43s both;
@@ -237,7 +300,7 @@ nav ul li a:active {
     flex-wrap: wrap;
     background: linear-gradient(to top, #dfdfdf, #ffffff);
     border-radius: 15px; /* Round the corners */
-    max-width: 93.2%; /* adjust this value as needed */
+    
     margin: 0 auto; /* Center the container horizontally */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add box shadow for depth */
     justify-content: center;
@@ -313,14 +376,43 @@ nav ul li a:active {
 
 }
 
+/* Mobile-specific styles */
+@media only screen and (max-width: 1212px) {
+    .plan-container {
+       flex-direction: column;
+       padding: 10px;
+     }
+    .plan {
+       flex: 1;
+       padding: 10px;
+       border-left: 0px solid rgba(0, 0, 0, 0.1);
+       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+     }
+    .plan h2 {
+       font-size: 18px;
+     }
+    .plan h1 {
+       font-size: 24px;
+     }
+    .plan ul {
+       margin: 10px 0;
+     }
+    .plan ul li {
+       font-size: 16px;
+     }
+    .plan-button {
+       font-size: 14px;
+       padding: 8px 16px;
+     }
+   }
+
 
 .tool-container {
-    margin-left: 20px;
-    height: 600px;
+    height: 600px; /* Set the height for the container */
     display: flex;
-    align-items: flex-start;
-    max-width: 1200px;
-    width: 100%;
+    align-items: stretch; /* Ensure both child elements stretch to the container height */
+    width: 100%; /* Ensure the container takes up the full width of its parent */
+    box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .tool-left-panel {
@@ -332,17 +424,21 @@ nav ul li a:active {
     align-items: stretch;
     padding: 20px;
     border-radius: 15px;
-    width: 70%;
-    max-width: 610px;
-    margin-right: 20px;
+    width: calc(50% - 10px); /* Adjust width to 50% minus half of the gap */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    align-self: flex-start;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    margin-right: 20px; /* Margin between the panels */
 }
 
 .video-container {
     display: flex;
-    flex-direction: row;
-    width: 30%;
+    flex-direction: column; /* Ensure video container contents are aligned vertically */
+    width: calc(50% - 20px); /* Adjust width to 50% minus the margin on the left panel */
+    padding: 20px; /* Add padding if necessary */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensure the video container stretches to container height */
 }
 
 .tool-button {
@@ -375,7 +471,7 @@ nav ul li a:active {
 }
 
 .tool-content {
-    width: 100%;
+    width: auto;
     margin: 0 0 10px 0;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 0 0 15px 15px;
@@ -396,16 +492,19 @@ nav ul li a:active {
 
 #tool-video-container {
     border-radius: 15px;
-    width: 100%;
+    width: 100%; /* Ensure it takes up the full width of its container */
+    height: 100%; /* Ensure it takes up the full height of its container */
     transition: opacity 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #tool-video-container video {
-    width: 93%;
-    height: auto;
+    width: 100%; /* Ensure it scales properly within its container */
+    height: 100%; /* Ensure it scales properly within its container */
     border-radius: 15px;
 }
-
 
 
 
@@ -417,9 +516,10 @@ nav ul li a:active {
     padding: 30px 20px;
     background: linear-gradient(to top, #dfdfdf, #ffffff);
     border-radius: 15px;
-    width: 93.9%;
+
     margin: 20px auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: stretch; /* Ensures all sections stretch to the same height */
 }
 
 #about section {
@@ -459,33 +559,21 @@ nav ul li a:active {
 }
 
 
+@media (max-width: 768px) {
+    #about {
+        grid-template-columns: 1fr; /* Switch to a single column layout on small screens */
+        padding: 20px;
+        gap: 1px;
+    }
 
-.titles {
-    padding-left: 20px;
-    background-clip: text;
-    color: #fff; /* Hide the text color */
-    margin-top: 60px;
-    margin-bottom: 60px;
+    #about h2 {
+        font-size: 1.2em; /* Slightly smaller heading font size */
+    }
+
+    #about p, #about ul {
+        font-size: 0.9em; /* Slightly smaller text */
+    }
 }
-
-
-
-.cta-button {
-    background: #12ae95;
-    background-size: 200% 100%;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-    background: #0b7968;
-
-}
-
-
 
 
 
@@ -497,7 +585,7 @@ nav ul li a:active {
 
 table {
     transition: transform 0.3s;
-    width: 96.5%;
+    width: 100%;
     border-collapse: separate; /* Use separate to allow for individual border-radius */
     border-spacing: 0; /* Ensures no extra space between cells */
     margin: 40px auto;
@@ -536,6 +624,9 @@ tbody tr:hover {
 }
 
 
+
+
+
 .roadmap-wrapper {
     width: 98vw;
     margin-left: calc(-49vw + 50%);
@@ -543,7 +634,7 @@ tbody tr:hover {
 }
 
 .roadmap-container {
-    width: 93%;
+    width: auto;
     max-width: none;
     margin: 0 auto;
     padding: 0 20px;
@@ -557,7 +648,7 @@ tbody tr:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: stretch;
-    margin-top: 50px;
+
     gap: 20px;
     opacity: 1;
     transition: none;
@@ -631,9 +722,14 @@ tbody tr:hover {
     }
 }
 
+
+
+
+
+
 .faq-item {
     margin: 20px auto;
-    width: 96.1%;
+    width: 100%;
 }
 
 .faq-question {
@@ -665,6 +761,9 @@ tbody tr:hover {
     padding: 20px;
     transition: max-height 0.5s ease-in, padding 0.5s ease-in;
 }
+
+
+
 
 
 footer {
@@ -704,8 +803,37 @@ footer {
     opacity: 0.8;
 }
 
+
+
+/* Add this at the end of your existing CSS */
+
 @media (max-width: 768px) {
-    .footer-content {
-        padding: 0 20px;
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0 auto; /* Center the body horizontally */
+        padding: 20px;
+        max-width: 100%;
+        background: linear-gradient(135deg, #00020e, #15171b, #00020e);
+        background-size: 200% 200%;
+        color: #333;
+        animation: gradientAnimation 10s ease infinite; /* Adjust duration as needed */
     }
+
+    .tool-container {
+        flex-direction: column;
+        height: auto; /* Adjust height to fit content */
+        margin-left: 0; /* Remove left margin on smaller screens */
+    }
+
+    .tool-left-panel {
+        width: auto;
+        margin-right: 0; /* Remove right margin on smaller screens */
+    }
+
+    .video-container {
+        width: 100%; /* Make video container full width on mobile */
+        margin-top: 20px; /* Add some space between content and video */
+    }
+
+
 }

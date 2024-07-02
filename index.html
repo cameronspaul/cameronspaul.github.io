@@ -15,12 +15,7 @@
                 <img src="logo.png" alt="PulseTracker Logo">
                 <h1>PulseTracker</h1>
             </div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <nav>
+            <nav class="desktop-menu">
                 <ul>
                     <li><a href="#plans">Our Plans</a></li>
                     <li><a href="#bot-tools">Bot Tools</a></li>
@@ -30,11 +25,24 @@
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
-            <div class="header-right">
-                <a href="https://t.me/PulseTrackerSolAlpha_bot" class="cta-button">Use PulseTracker</a>
+            <a href="https://t.me/PulseTrackerSolAlpha_bot" class="cta-button-header">Use PulseTracker</a>
+            <div class="hamburger-menu" onclick="toggleMobileNav()">
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
         </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#plans">Our Plans</a>
+            <a href="#bot-tools">Bot Tools</a>
+            <a href="#about">About</a>
+            <a href="#compare">Compare</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://t.me/PulseTrackerSolAlpha_bot" class="cta-button">Use PulseTracker</a>
+        </nav>
     </header>
+    
 
     <section id="home">
         <div class="intro">
@@ -121,7 +129,6 @@
 
 
     <h1 class="titles">About PulseTracker</h1>
-
     <section id="about" class="animate-on-scroll">
         <h2>Introduction and Core Functionality</h2>
         <p>PulseTracker is designed to help you find <strong>profitable</strong> wallets for copy trading. By identifying wallets with a <strong>successful</strong> trading history, it removes the guesswork from selecting tokens, offering you unparalleled insights into wallet performance.</p>
@@ -130,7 +137,7 @@
     
     <section id="about" class="animate-on-scroll">
         <h2>Unique Features and Benefits</h2>
-        <p>PulseTracker stands out with its <strong>unique</strong> set of features, providing in-depth analysis and <strong>filtering</strong> trades that start and end within the same wallet. This ensures you see the complete transaction history per token, avoiding skewed results from free token distributions.</p>
+        <p>PulseTracker stands out with its <strong>unique</strong> set of features, providing in-depth analysis and <strong>filtering</strong> trades that start and end within the same wallet. This ensures you see the full transaction history per token, avoiding skewed results from free token distributions.</p>
         <p>With PulseTracker, you can identify wallets that are genuinely <strong>profitable</strong> in the real world, making it a <strong>reliable</strong> tool for copy trading and boosting your trading confidence.</p>
     </section>
     

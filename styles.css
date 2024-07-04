@@ -652,7 +652,7 @@ nav ul li a:active {
 }
 .comparison-table {
     transition: transform 0.3s;
-    width: auto;
+    width: 100%;
     border-collapse: separate; /* Use separate to allow for individual border-radius */
     border-spacing: 0; /* Ensures no extra space between cells */
     margin: 40px auto;

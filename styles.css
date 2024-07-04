@@ -111,13 +111,25 @@ header {
     animation: fadeIn 0.4s ease-in-out 0.1s both;
     height: 60px; /* Set a fixed height for the header content */
 }
-
 header .logo {
     display: flex;
     align-items: center;
     animation: fadeIn 0.4s ease-in-out 0.15s both;
     height: 100%; /* Make the logo container full height of header-content */
 }
+
+header .logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+header .logo a:visited {
+    color: inherit;
+}
+
+
 
 header .logo img {
     height: 50px;
@@ -335,7 +347,16 @@ nav ul li a:active {
 }
 
 
-
+@media (max-width: 768px) {
+    .intro {
+        color: #fff;
+        margin-top: -30px;
+        padding-top: 10px;
+        animation: fadeIn 0.4s ease-in-out 0.35s both;
+        max-width: 550px;
+        margin-bottom: 60px; /* Adjust this value as needed */
+    }
+}
 
 
 
@@ -461,7 +482,7 @@ nav ul li a:active {
 
 .tool-container {
     display: flex;
-    min-height: 800px;
+    min-height: 500px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -492,7 +513,7 @@ nav ul li a:active {
 .tool-button {
     display: block;
     width: auto;
-    padding: 20px;
+    padding: 18px;
     margin: 0 0 10px 0;
     background: #fff;
     color: #333;
@@ -500,7 +521,7 @@ nav ul li a:active {
     cursor: pointer;
     text-align: left;
     border-radius: 15px;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -549,6 +570,9 @@ nav ul li a:active {
 
 
 @media (max-width: 768px) {
+    .tool-button {
+        font-size: 18px;
+    }
     .tool-container {
         flex-direction: column;
     }
@@ -691,17 +715,16 @@ nav ul li a:active {
     color: #dc3545; /* Red color for cross */
 }
 
-
 .wallets-table {
     width: 100%;
     background: linear-gradient(to top, #dfdfdf, #ffffff);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     table-layout: fixed;
+    padding: 30px;
 }
 
-.wallets-table th,
-.wallets-table td {
+.wallets-table th, .wallets-table td {
     text-align: center;
     vertical-align: middle;
     padding: 10px;
@@ -712,31 +735,28 @@ nav ul li a:active {
     font-size: 0.9em;
 }
 
-
-
-
 .wallet-subtitle-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     margin-top: -20px;
-  }
-  
-  .sub-titles-download {
+}
+
+.sub-titles-download {
     margin-right: 20px;
     flex: 1;
     background-clip: text;
     color: #fff; /* Hide the text color */
     font-weight: normal;
     margin-bottom: 40px;
-  }
-  
-  .example-file-download {
+}
+
+.example-file-download {
     flex-shrink: 0;
-  }
-  
-  .example-file-button {
+}
+
+.example-file-button {
     background: #12ae95;
     background-size: 200% 100%;
     color: #fff;
@@ -746,13 +766,13 @@ nav ul li a:active {
     transition: all 0.3s ease;
     display: inline-block;
     margin-bottom: 20px;
-  }
-  
-  .example-file-button:hover {
-    background: #0b7968;
-  }
+}
 
-  @media (max-width: 600px) {
+.example-file-button:hover {
+    background: #0b7968;
+}
+
+@media (max-width: 600px) {
     .wallet-subtitle-row {
         flex-direction: column;
         align-items: flex-start;
@@ -761,31 +781,40 @@ nav ul li a:active {
 
     .sub-titles-download {
         margin-right: 0;
-        margin-bottom: 10px; /* Adjust spacing if needed */
-
+        margin-bottom: 10px;
     }
 
     .example-file-download {
-        margin-top: 10px; /* Adjust spacing if needed */
+        margin-top: 10px;
         width: 100%;
         text-align: center;
     }
 
     .example-file-button {
         width: auto;
-        padding: 10px 15px; /* Adjust padding if needed */
+        padding: 10px 15px;
     }
-
-
 
     .wallets-table {
         font-size: 12px;
+        padding: 0px;
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+
+    .wallets-table thead th {
+        font-weight: 600;
+        font-size: 0.8em;
+        padding: 10px;
     }
 
     .wallets-table th, .wallets-table td {
         padding: 6px 4px;
     }
 }
+
 
 .roadmap-wrapper {
     width: 98vw;

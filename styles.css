@@ -458,8 +458,8 @@ nav ul li a:active {
      }
 }
 
+
 .tool-container {
-    
     display: flex;
     min-height: 800px;
     width: 100%;
@@ -468,8 +468,7 @@ nav ul li a:active {
 
 .tool-left-panel {
     background: linear-gradient(to top, #dfdfdf, #ffffff);
-    min-width: calc(40% - 10px);
-    animation: fadeIn 0.5s ease-in-out 0.55s both;
+    min-width: 50%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -503,7 +502,6 @@ nav ul li a:active {
     border-radius: 15px;
     font-size: 28px;
     font-weight: bold;
-    transition: border-radius 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -530,9 +528,9 @@ nav ul li a:active {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
     line-height: 1.6;
     padding: 0 20px;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, padding 0.5s ease-out;
 }
 
 .tool-content.active {
@@ -542,26 +540,42 @@ nav ul li a:active {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-#tool-video-container {
-    border-radius: 15px;
-    width: 100%;
-    height: 100%; /* Ensure container takes up full height of its parent */
-    transition: opacity 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
 
 #tool-video-container video {
     width: 100%; /* Ensure video width is 100% of the container */
     height: 100%; /* Ensure video height is 100% of the container */
     border-radius: 15px;
-    object-fit: cover; /* Optional: Maintain aspect ratio and cover the container */
-    transition: opacity 0.5s ease;
 }
 
 
+@media (max-width: 768px) {
+    .tool-container {
+        flex-direction: column;
+    }
+
+    .tool-left-panel {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .tool-right-panel {
+        display: none;
+    }
+
+    .tool-content {
+        position: relative;
+    }
+
+    .mobile-video-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .mobile-video-container video {
+        width: 100%;
+        border-radius: 15px;
+    }
+}
 
 #about {
     display: grid;
@@ -638,7 +652,7 @@ nav ul li a:active {
 }
 .comparison-table {
     transition: transform 0.3s;
-    width: 100%;
+    width: auto;
     border-collapse: separate; /* Use separate to allow for individual border-radius */
     border-spacing: 0; /* Ensures no extra space between cells */
     margin: 40px auto;
@@ -648,6 +662,7 @@ nav ul li a:active {
 }
 
 .comparison-table thead {
+    
     background: linear-gradient(75deg, #12ae95, #12ae95);
     color: #fff;
     background-size: 200% 200%;
@@ -677,38 +692,100 @@ nav ul li a:active {
 }
 
 
-
 .wallets-table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
     background: linear-gradient(to top, #dfdfdf, #ffffff);
     border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 30px; /* Add some padding to the table */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    table-layout: fixed;
+}
+
+.wallets-table th,
+.wallets-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
 }
 
 .wallets-table thead th {
-    color: #333;
-    font-weight: bold;
-    padding: 20px 30px; /* Set equal padding for top and bottom, and left and right */
-    text-align: left;
-    white-space: nowrap; /* Prevent text from wrapping */
+    font-weight: 600;
+    font-size: 0.9em;
 }
 
-.wallets-table tbody td {
-    padding: 20px 30px; /* Ensure the padding is consistent for top and bottom */
-}
 
-.wallets-table tbody tr:last-child td {
-    border-bottom: none;
-}
 
-#wallets-table {
-    border-radius: 15px;
-}
 
+.wallet-subtitle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: -20px;
+  }
+  
+  .sub-titles-download {
+    margin-right: 20px;
+    flex: 1;
+    background-clip: text;
+    color: #fff; /* Hide the text color */
+    font-weight: normal;
+    margin-bottom: 40px;
+  }
+  
+  .example-file-download {
+    flex-shrink: 0;
+  }
+  
+  .example-file-button {
+    background: #12ae95;
+    background-size: 200% 100%;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  
+  .example-file-button:hover {
+    background: #0b7968;
+  }
+
+  @media (max-width: 600px) {
+    .wallet-subtitle-row {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: -20px;
+    }
+
+    .sub-titles-download {
+        margin-right: 0;
+        margin-bottom: 10px; /* Adjust spacing if needed */
+
+    }
+
+    .example-file-download {
+        margin-top: 10px; /* Adjust spacing if needed */
+        width: 100%;
+        text-align: center;
+    }
+
+    .example-file-button {
+        width: auto;
+        padding: 10px 15px; /* Adjust padding if needed */
+    }
+
+
+
+    .wallets-table {
+        font-size: 12px;
+    }
+
+    .wallets-table th, .wallets-table td {
+        padding: 6px 4px;
+    }
+}
 
 .roadmap-wrapper {
     width: 98vw;

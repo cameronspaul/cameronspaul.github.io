@@ -41,33 +41,44 @@ hamburger.addEventListener('click', () => {
     }
 });
 
-// Attach event listeners to links
 document.addEventListener("DOMContentLoaded", function() {
-    const isMobile = window.matchMedia("(max-width: 600px)").matches;
-    const navLinks = document.querySelectorAll('nav ul li a,.cta-button,.plan-button');
+  // Check if the user is on a mobile device
+  const isMobile = window.matchMedia("(max-width: 600px)").matches;
+  
+  // Define offsets for mobile and desktop
+  const mobileOffset = 170; // Adjust this value for mobile
+  const desktopOffset = 40; // Adjust this value for desktop
+  
+  // Select the navigation links
+  const navLinks = document.querySelectorAll('nav ul li a, .cta-button, .plan-button, .mobile-nav a');
 
-    // Check if it's a mobile device
-    if (!isMobile) {
-        // Attach event listeners to links
-        navLinks.forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                const headerOffset = document.querySelector('header').offsetHeight;
-                const additionalOffset = 40; // Add additional offset as needed
-                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-                const offsetPosition = elementPosition - headerOffset - additionalOffset;
+  // Attach event listeners to links
+  navLinks.forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+          if (this.getAttribute('href').startsWith('http')) {
+              // Skip smooth scrolling for external links
+              return;
+          }
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    }
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+              // Determine which offset to use
+              const headerOffset = document.querySelector('header').offsetHeight;
+              const additionalOffset = isMobile ? mobileOffset : desktopOffset;
+              const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+              const offsetPosition = elementPosition - headerOffset - additionalOffset;
+
+              window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+              });
+          }
+      });
+  });
 });
-
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -251,62 +262,48 @@ function createToolPanels() {
 function toggleToolPanel(toolIndex) {
   const toolButtons = document.querySelectorAll('.tool-button');
   const toolContents = document.querySelectorAll('.tool-content');
-  const toolVideoContainer = document.getElementById('tool-video-container');
+  const isMobile = window.innerWidth <= 768;
 
-  // Check if the clicked button is already active
-  if (toolButtons[toolIndex].classList.contains('active')) {
-    return; // Exit the function if the button is already active
-  }
+  // Remove active class from all buttons and contents
+  toolButtons.forEach(button => button.classList.remove('active'));
+  toolContents.forEach(content => content.classList.remove('active'));
 
-  // Fade out all tool panels and remove active class
-  toolPanels.forEach((_, i) => {
-    toolButtons[i].classList.remove('active');
-    toolContents[i].classList.remove('active');
-  });
+  // Add active class to clicked button and its content
+  toolButtons[toolIndex].classList.add('active');
+  toolContents[toolIndex].classList.add('active');
 
-  // Fade out current video
-  fadeOut(toolVideoContainer);
-
-  // After a short delay, update content and fade in
-  setTimeout(() => {
-    // Update active states
-    toolButtons[toolIndex].classList.add('active');
-    toolContents[toolIndex].classList.add('active');
-
-    // Update and fade in the new video
-    updateVideo(toolPanels[toolIndex].videoUrl);
-    fadeIn(toolVideoContainer);
-  }, 300); // This delay should match the fade-out duration in CSS
+  // Update video for both desktop and mobile
+  updateVideo(toolPanels[toolIndex].videoUrl, isMobile, toolContents[toolIndex]);
 }
 
-function fadeOut(element) {
-  element.style.opacity = '0';
-}
+function updateVideo(videoUrl, isMobile, contentElement) {
+  if (isMobile) {
+    // Remove existing mobile video containers
+    document.querySelectorAll('.mobile-video-container').forEach(container => {
+      container.remove();
+    });
 
-function fadeIn(element) {
-  element.style.opacity = '1';
-}
-
-function updateVideo(videoUrl) {
-  const toolVideoContainer = document.getElementById('tool-video-container');
-  const existingVideo = toolVideoContainer.querySelector('video');
-
-  if (existingVideo) {
-    const source = existingVideo.querySelector('source');
-    source.src = videoUrl;
-    existingVideo.load();
-    existingVideo.play();
-  } else {
-    toolVideoContainer.innerHTML = `
-      <video width="100%" autoplay loop muted> <!-- Added muted attribute -->
+    // Create new mobile video container
+    const mobileVideoContainer = document.createElement('div');
+    mobileVideoContainer.className = 'mobile-video-container';
+    mobileVideoContainer.innerHTML = `
+      <video width="100%" autoplay loop muted>
         <source src="${videoUrl}" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     `;
-    const video = toolVideoContainer.querySelector('video');
-    video.addEventListener('loadeddata', () => {
-      video.play();
-    });
+
+    // Insert the video at the top of the content section
+    contentElement.insertBefore(mobileVideoContainer, contentElement.firstChild);
+  } else {
+    // Desktop version
+    const toolVideoContainer = document.getElementById('tool-video-container');
+    toolVideoContainer.innerHTML = `
+      <video width="100%" autoplay loop muted>
+        <source src="${videoUrl}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    `;
   }
 }
 
@@ -316,3 +313,10 @@ createToolPanels();
 // Show the first tool panel and video by default
 toggleToolPanel(0);
 
+// Add resize event listener to handle transitions between mobile and desktop views
+window.addEventListener('resize', () => {
+  const activeIndex = Array.from(document.querySelectorAll('.tool-button')).findIndex(button => button.classList.contains('active'));
+  if (activeIndex !== -1) {
+    toggleToolPanel(activeIndex);
+  }
+});

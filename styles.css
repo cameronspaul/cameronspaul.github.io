@@ -78,7 +78,7 @@ header {
     padding: 1rem 0;
     width: auto;
     z-index: 1000;
-    overflow: hidden;
+
     animation:
         fadeIn 0.4s ease-in-out 0.05s both,
         headerAnimation 15s ease infinite;
@@ -282,6 +282,7 @@ nav ul li a:active {
 }
 
 
+
 @media (max-width: 768px) {
     header {
         padding: 0.1rem 0; /* Reduce padding for mobile */
@@ -335,16 +336,25 @@ nav ul li a:active {
     gap: 10px; /* Adjust this value to control spacing between elements */
 }
 
-.social-icon {
-    scale: 1.2;
-    display: inline-flex;
-    margin-left: 20px;
-    align-items: center;
-    justify-content: center;
-
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Use the parent element's text color */
-}
+.intro-social-links {
+    display: flex;
+    justify-content: space-around; /* Space icons evenly with space around them */
+    align-items: center; /* Center the icons vertically */
+    width: 20%; /* Adjusted width to ensure better fit within the container */
+  }
+  
+  .cta-button {
+    margin-right: 20px; /* Space between the CTA button and social links */
+  }
+  
+  .social-icon {
+    text-align: center;
+    margin: 0 10px; /* Space around each social icon */
+  }
+  
+  .social-icon i {
+    font-size: 30px; /* Ensure consistent icon size */
+  }
 
 
 @media (max-width: 768px) {

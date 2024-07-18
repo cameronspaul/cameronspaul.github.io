@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isElementInViewport(roadmapContainer) && !roadmapContainer.classList.contains('visible')) {
             roadmapContainer.classList.add('visible');
             setTimeout(() => {
-                animateProgressBar(2000, 21); // 2000ms duration, 25% target width
+                animateProgressBar(2000, 16); // 2000ms duration, 25% target width
             }, 500);
         }
     }

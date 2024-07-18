@@ -878,6 +878,7 @@ nav ul li a:active {
 .roadmap-container.visible .phase:nth-child(2) { transition-delay: 0.2s; }
 .roadmap-container.visible .phase:nth-child(3) { transition-delay: 0.3s; }
 .roadmap-container.visible .phase:nth-child(4) { transition-delay: 0.4s; }
+.roadmap-container.visible .phase:nth-child(5) { transition-delay: 0.5s; }
 /* Add more if you have more phases */
 
 .phase h2 {

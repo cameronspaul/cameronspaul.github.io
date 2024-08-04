@@ -80,6 +80,33 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const featureToggles = document.querySelectorAll('.feature-toggle');
+  
+  featureToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const listItem = this.closest('li');
+      const description = listItem.querySelector('.feature-description');
+
+      if (listItem.classList.contains('feature-active')) {
+        description.style.maxHeight = `${description.scrollHeight}px`;
+        setTimeout(() => {
+          listItem.classList.remove('feature-active');
+          description.style.maxHeight = '0';
+        }, 10);
+      } else {
+        listItem.classList.add('feature-active');
+        description.style.maxHeight = `${description.scrollHeight}px`;
+        description.addEventListener('transitionend', function() {
+          if (listItem.classList.contains('feature-active')) {
+            description.style.maxHeight = 'none';
+          }
+        }, { once: true });
+      }
+    });
+  });
+});
+
 
 document.addEventListener('DOMContentLoaded', function() {
   const faqItems = document.querySelectorAll('.faq-item');
@@ -116,8 +143,8 @@ document.addEventListener('DOMContentLoaded', function() {
             var elementTopPosition = element.offsetTop;
             var elementBottomPosition = (elementTopPosition + elementHeight);
 
-            if ((elementBottomPosition >= windowTopPosition + windowHeight * 0.1) &&
-                (elementTopPosition <= windowBottomPosition - windowHeight * 0.1)) {
+            if ((elementBottomPosition >= windowTopPosition + windowHeight * 0) &&
+                (elementTopPosition <= windowBottomPosition - windowHeight * 0)) {
                 element.classList.add('is-visible');
             }
         });
@@ -172,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isElementInViewport(roadmapContainer) && !roadmapContainer.classList.contains('visible')) {
             roadmapContainer.classList.add('visible');
             setTimeout(() => {
-                animateProgressBar(2000, 16); // 2000ms duration, 25% target width
+                animateProgressBar(2000, 17); // 2000ms duration, 25% target width
             }, 500);
         }
     }
@@ -320,3 +347,73 @@ window.addEventListener('resize', () => {
     toggleToolPanel(activeIndex);
   }
 });
+
+
+const steps = [
+  {
+    title: "Step 1: Start the Payment Bot",
+    description: "Open Telegram and search for @PulseTrackerSolPay_bot. Start a chat with the bot. Send the /start command to initiate the subscription process.",
+    image: "payment1.png"
+  },
+  {
+    title: "Step 2: Choose Your Subscription Tier",
+    description: "Select from one of our three tiers: Basic Plan ($34/month), Standard Plan ($44/month), or Premium Plan ($59/month). Each tier offers additional features and benefits.",
+    image: "payment2.png"
+  },
+  {
+    title: "Step 3: Select Subscription Duration",
+    description: "Choose your preferred subscription length: 1 Month (full price), 6 Months (10% discount), or 12 Months (20% discount).",
+    image: "payment3.png"
+  },
+  {
+    title: "Step 4: Make the Payment",
+    description: "The bot will provide you with the exact SOL amount to send and the wallet address for payment. Copy the SOL amount and wallet address, then use your Solana wallet to send the exact SOL amount to the provided address.",
+    image: "payment4.png"
+  },
+  {
+    title: "Step 5: Confirm Your Transaction",
+    description: "After sending the payment, copy your transaction signature and paste it into the chat with the payment bot. The bot will verify your payment.",
+    image: "payment5.png"
+  },
+  {
+    title: "Step 6: Access Your Subscription",
+    description: "Once your payment is confirmed, you'll receive a confirmation message and your subscription will be activated immediately. You can now access all features of your chosen tier through the @PulseTrackerSol_bot bot.",
+    image: "payment6.png"
+  }
+];
+
+let currentStep = 0;
+
+const stepTitle = document.querySelector('.paybot-step-title');
+const stepDescription = document.querySelector('.paybot-step-description');
+const stepImage = document.querySelector('.paybot-step-image');
+const backBtn = document.querySelector('.paybot-btn-back');
+const nextBtn = document.querySelector('.paybot-btn-next');
+
+function updateStep() {
+  const step = steps[currentStep];
+  stepTitle.textContent = step.title;
+  stepDescription.textContent = step.description;
+  stepImage.src = step.image;
+  stepImage.alt = `Step ${currentStep + 1} illustration`;
+  
+  backBtn.disabled = currentStep === 0;
+  nextBtn.disabled = currentStep === steps.length - 1;
+}
+
+backBtn.addEventListener('click', () => {
+  if (currentStep > 0) {
+    currentStep--;
+    updateStep();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    updateStep();
+  }
+});
+
+// Initialize the first step
+updateStep();

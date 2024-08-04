@@ -91,7 +91,7 @@ header {
     color: #fff;
     padding: 10px 16px;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: all 0.3s ease;
     font-size: 0.85em;
 }
@@ -137,7 +137,7 @@ header .logo img {
 }
 
 header h1 {
-    font-size: 2em;
+    font-size: 1.7em;
     font-weight: bold;
     margin: 0;
     line-height: 60px; /* Match the height of header-content */
@@ -165,7 +165,7 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 5px;
+    margin: 0 1px;
     display: flex; /* Add this */
     align-items: center; /* Add this */
     height: 100%; /* Add this */
@@ -186,7 +186,8 @@ nav ul li a {
 
 /* Hover styles for navigation buttons */
 nav ul li a:hover {
-    font-size: 0.85em;
+    font-size: 0.87em;
+
     background-color: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -259,13 +260,15 @@ nav ul li a:active {
 }
 
 /* Staggered animation for opening */
-.mobile-nav.open a:nth-child(1) { transition-delay: 0.18s; }
-.mobile-nav.open a:nth-child(2) { transition-delay: 0.15s; }
-.mobile-nav.open a:nth-child(3) { transition-delay: 0.12s; }
-.mobile-nav.open a:nth-child(4) { transition-delay: 0.09s; }
-.mobile-nav.open a:nth-child(5) { transition-delay: 0.06s; }
-.mobile-nav.open a:nth-child(6) { transition-delay: 0.03s; }
-.mobile-nav.open a:nth-child(7) { transition-delay: 0s; }
+.mobile-nav.open a:nth-child(1) { transition-delay: 0.24s; }
+.mobile-nav.open a:nth-child(2) { transition-delay: 0.21s; }
+.mobile-nav.open a:nth-child(3) { transition-delay: 0.18s; }
+.mobile-nav.open a:nth-child(4) { transition-delay: 0.15s; }
+.mobile-nav.open a:nth-child(5) { transition-delay: 0.12s; }
+.mobile-nav.open a:nth-child(6) { transition-delay: 0.09s; }
+.mobile-nav.open a:nth-child(7) { transition-delay: 0.06s; }
+.mobile-nav.open a:nth-child(8) { transition-delay: 0.03s; }
+.mobile-nav.open a:nth-child(9) { transition-delay: 0s; }
 /* Add more if you have more menu items */
 
 .mobile-nav a:hover {
@@ -455,6 +458,41 @@ nav ul li a:active {
     background: #0b7968;
 
 }
+
+.feature-toggle {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plus-icon {
+    transition: transform 0.3s ease;
+}
+
+.feature-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.feature-active .plus-icon {
+    transform: rotate(45deg);
+}
+
+.feature-active .feature-description {
+    max-height: 200px; /* Adjust this value based on your content */
+    opacity: 1;
+    visibility: visible;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+
 
 /* Mobile-specific styles */
 @media only screen and (max-width: 1212px) {
@@ -725,6 +763,91 @@ nav ul li a:active {
     color: #dc3545; /* Red color for cross */
 }
 
+
+
+.paybot-container {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.paybot-left-panel {
+    background: linear-gradient(to top, #dfdfdf, #ffffff);
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    border-radius: 15px;
+    width: calc(50% - 10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin-right: 50px;
+    position: relative;
+    height: 300px;
+}
+
+.paybot-right-panel {
+    width: 50%;
+}
+
+.paybot-button {
+    display: block;
+    width: auto;
+    padding: 18px;
+    margin: 0 0 10px 0;
+    background: #fff;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.paybot-button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paybot-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background: #12ae95;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+
+.paybot-btn:hover {
+    background: #0b7968;
+}
+
+.paybot-btn:disabled {
+    background-color: #666;
+    color: white;
+    cursor: not-allowed;
+}
+
+#paybot-image-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+
+
+
 .wallets-table {
     width: 100%;
     background: linear-gradient(to top, #dfdfdf, #ffffff);
@@ -751,6 +874,11 @@ nav ul li a:active {
     align-items: center;
     flex-wrap: wrap;
     margin-top: -20px;
+    margin-bottom: -30px;
+}
+
+.winning-wallets-explain{
+    width: 60%;
 }
 
 .sub-titles-download {

@@ -382,22 +382,20 @@ nav ul li a:active {
     padding: 20px;
     flex-wrap: wrap;
     background: linear-gradient(to top, #dfdfdf, #ffffff);
-    border-radius: 15px; /* Round the corners */
-    
-    margin: 0 auto; /* Center the container horizontally */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add box shadow for depth */
-    justify-content: center;
+    border-radius: 15px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .plan {
     flex: 1;
-    padding: 20px; /* Add padding for spacing */
-    border-left: 1px solid rgba(0, 0, 0, 0.1); /* Set a semi-transparent border */
+    padding: 20px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
-.plan:first-child {
-    border-left: none; /* Remove left border from the first .plan item */
+.plan:nth-of-type(2) {
+    border-left: none;
 }
 
 .plan h2 {
@@ -410,6 +408,21 @@ nav ul li a:active {
     font-size: 36px;
     margin: 10px 0;
     color: #333;
+}
+
+.plan h1 .new-price {
+    font-size: 36px;
+    color: #333;
+}
+
+.plan h1 .old-price {
+    font-size: 26px;
+    color: #888;
+    text-decoration: line-through;
+    font-weight: 100;
+    font-weight: bold;
+
+
 }
 
 .plan h1 span {
@@ -493,6 +506,35 @@ nav ul li a:active {
 }
 
 
+.old-price {
+    font-size: 18px;
+    color: #888;
+    text-decoration: line-through;
+}
+
+
+.launch-price-label {
+    position: absolute;
+    top: -20px;
+    right: -50px;
+    background: #ff3d3d;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    transform-style: preserve-3d;
+    -webkit-font-smoothing: antialiased;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.launch-price-label::after {
+    content: "Until Nov 1st!";
+    display: block;
+    font-size: 14px; /* Reduced font size */
+    font-weight: 500; /* Set a lighter font weight */
+    margin-top: 2px;
+}
 
 /* Mobile-specific styles */
 @media only screen and (max-width: 1212px) {

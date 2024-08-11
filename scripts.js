@@ -357,12 +357,12 @@ const steps = [
   },
   {
     title: "Step 2: Choose Your Subscription Tier",
-    description: "Select from one of our three tiers: Basic Plan ($34/month), Standard Plan ($44/month), or Premium Plan ($59/month). Each tier offers additional features and benefits.",
+    description: "Select from one of our three tiers: Basic Plan, Standard Plan, or Premium Plan. Each tier offers additional features and benefits.",
     image: "payment2.png"
   },
   {
     title: "Step 3: Select Subscription Duration",
-    description: "Choose your preferred subscription length: 1 Month (full price), 6 Months (10% discount), or 12 Months (20% discount).",
+    description: "Choose your preferred subscription length: 1 Month (full price), 3 Months (5% discount), 6 Months (10% discount), or 12 Months (20% discount).",
     image: "payment3.png"
   },
   {

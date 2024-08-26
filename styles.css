@@ -567,6 +567,45 @@ nav ul li a:active {
        font-size: 14px;
        padding: 8px 16px;
      }
+
+    .launch-price-label {
+        position: absolute;
+        top: -20px;
+        right: -10px;
+        background: #ff3d3d;
+        color: #fff;
+        padding: 8px 10px;
+        border-radius: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        transform-style: preserve-3d;
+        -webkit-font-smoothing: antialiased;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .launch-price-label::after {
+        content: "Until Nov 1st!";
+        display: block;
+        font-size: 14px; /* Reduced font size */
+        font-weight: 500; /* Set a lighter font weight */
+        margin-top: 2px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -887,6 +926,29 @@ nav ul li a:active {
     border-radius: 15px;
 }
 
+@media screen and (max-width: 768px) {
+    .paybot-container {
+        flex-direction: column;
+    }
+
+    .paybot-left-panel {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        height: auto;
+        min-height: 300px;
+    }
+
+    .paybot-right-panel {
+        width: 100%;
+    }
+
+    .paybot-button-container {
+        position: static;
+        margin-top: 20px;
+    }
+}
+
 
 
 
@@ -916,12 +978,18 @@ nav ul li a:active {
     align-items: center;
     flex-wrap: wrap;
     margin-top: -20px;
-    margin-bottom: -30px;
+    margin-bottom: -20px;
 }
 
-.winning-wallets-explain{
+.winning-wallets-explain {
     width: 60%;
-}
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .winning-wallets-explain {
+      width: 100%;
+    }
+  }
 
 .sub-titles-download {
     margin-right: 20px;

@@ -371,9 +371,29 @@ nav ul li a:active {
     }
 }
 
+/* Style for the phone image container */
+.phone-container {
+    animation: fadeIn 0.48s ease-in-out 0.43s both;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateY(-111%);
+  }
+  
+  .phone-image {
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+  }
+  @media (max-width: 1780px) {
+    .phone-container {
+      display: none;
+    }
+  }
 
 
-.plan-container {
+  .plan-container {
     transition: transform 0.3s;
     animation: fadeIn 0.48s ease-in-out 0.43s both;
     display: flex;
@@ -385,14 +405,17 @@ nav ul li a:active {
     border-radius: 15px;
     margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.plan {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .plan {
     flex: 1;
     padding: 20px;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     position: relative;
-}
+    z-index: 1;
+  }
 
 .plan:nth-of-type(2) {
     border-left: none;
@@ -844,7 +867,28 @@ nav ul li a:active {
     color: #dc3545; /* Red color for cross */
 }
 
+@media only screen and (max-width: 768px) {
+    .comparison-table {
+        margin: 20px auto;
+    }
 
+    .comparison-table thead th {
+        padding: 10px; /* Reduce padding for mobile */
+    }
+
+    .comparison-table tbody td {
+        padding: 5px; /* Reduce padding for mobile */
+    }
+
+    .comparison-table tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.05); /* Reduce background color opacity for mobile */
+    }
+
+    .comparison-table thead {
+        background-size: 150% 150%; /* Reduce gradient size for mobile */
+        background-position: 0% 50%; /* Initial background position */
+    }
+}
 
 .paybot-container {
     display: flex;
@@ -950,8 +994,6 @@ nav ul li a:active {
 }
 
 
-
-
 .wallets-table {
     width: 100%;
     background: linear-gradient(to top, #dfdfdf, #ffffff);
@@ -959,52 +1001,53 @@ nav ul li a:active {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     table-layout: fixed;
     padding: 30px;
-}
-
-.wallets-table th, .wallets-table td {
+  }
+  
+  .wallets-table th, .wallets-table td {
     text-align: center;
     vertical-align: middle;
     padding: 10px;
-}
-
-.wallets-table thead th {
+  }
+  
+  .wallets-table thead th {
     font-weight: 600;
     font-size: 0.9em;
+  }
+  
+  .titles-wallets-container {
+    display: flex;
+    align-items: center;
+  }
+  
+.wallets-titles {
+    background-clip: text;
+    color: #fff;
+    flex: 1;
+    margin-top: 60px;
+    margin-bottom: 0px;
+  }
+  
+.main-sub-titles {
+    background-clip: text;
+    color: #fff; /* Hide the text color */
+    font-weight: normal;
 }
 
-.wallet-subtitle-row {
+.sub-sub-titles {
+    font-weight: normal;
+
+    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: -20px;
-    margin-bottom: -20px;
-}
-
-.winning-wallets-explain {
-    width: 60%;
   }
-  
-  @media only screen and (max-width: 768px) {
-    .winning-wallets-explain {
-      width: 100%;
-    }
-  }
-
-.sub-titles-download {
-    margin-right: 20px;
-    flex: 1;
-    background-clip: text;
-    color: #fff; /* Hide the text color */
-    font-weight: normal;
-    margin-bottom: 40px;
-}
 
 .example-file-download {
     flex-shrink: 0;
-}
-
-.example-file-button {
+  }
+  
+  .example-file-button {
     background: #12ae95;
     background-size: 200% 100%;
     color: #fff;
@@ -1013,55 +1056,57 @@ nav ul li a:active {
     border-radius: 10px;
     transition: all 0.3s ease;
     display: inline-block;
-    margin-bottom: 20px;
-}
-
-.example-file-button:hover {
+    margin-top: 60px;
+  }
+  
+  .example-file-button:hover {
     background: #0b7968;
-}
-
-@media (max-width: 600px) {
+  }
+  
+  @media (max-width: 600px) {
     .wallet-subtitle-row {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: -20px;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: -20px;
     }
-
+  
     .sub-titles-download {
-        margin-right: 0;
-        margin-bottom: 10px;
+      margin-right: 0;
+      margin-bottom: 10px;
     }
-
+  
     .example-file-download {
-        margin-top: 10px;
-        width: 100%;
-        text-align: center;
+      margin-top: 10px;
+      margin-right: 10px;
+      width: 30%;
+      text-align: center;
     }
-
+  
     .example-file-button {
-        width: auto;
-        padding: 10px 15px;
+      width: auto;
+      padding: 10px 15px;
     }
-
+  
     .wallets-table {
-        font-size: 12px;
-        padding: 0px;
-        width: 100%;
-        overflow-x: auto;
-        display: block;
-        white-space: nowrap;
+      font-size: 12px;
+      padding: 0px;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      white-space: nowrap;
     }
-
+  
     .wallets-table thead th {
-        font-weight: 600;
-        font-size: 0.8em;
-        padding: 10px;
+      font-weight: 600;
+      font-size: 0.8em;
+      padding: 10px;
     }
-
+  
     .wallets-table th, .wallets-table td {
-        padding: 6px 4px;
+      padding: 6px 4px;
     }
-}
+    
+  }
 
 
 .roadmap-wrapper {

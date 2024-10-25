@@ -52,6 +52,11 @@
 </script>
 
 <body>
+
+    <div class="halloween-sale-banner">
+        👻 Halloween Sale: 40% Off All Tiers! 👻
+        <div class="countdown" id="countdown"></div>
+    </div>
     <header>
         <div class="header-content">
             <div class="logo">
@@ -62,11 +67,11 @@
             </div>
             <nav class="desktop-menu">
                 <ul>
-                    <li><a href="#plans">Plans</a></li>
                     <li><a href="#winning-wallets">Wallets</a></li>
                     <li><a href="#bot-tools">Tools</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#referral">Referrals</a></li>
                     <li><a href="#compare">Compare</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#paybot">Paybot</a></li>
                     <li><a href="#roadmap">Roadmap</a></li>
                     <li><a href="#faq">FAQ</a></li>
@@ -81,18 +86,19 @@
         </div>
     </header>
         <nav class="mobile-nav" id="mobileNav">
-            <a href="#plans">Plans</a>
+            <a href="https://t.me/PulseTrackerSolPay_bot" class="cta-button" target="_blank">Subscribe Now!</a>
+
             <a href="#winning-wallets">Wallets</a>
             <a href="#bot-tools">Tools</a>
-            <a href="#about">About</a>
+            <a href="#referral">Referrals</a>
             <a href="#compare">Compare</a>
+            <a href="#about">About</a>
             <a href="#paybot">Paybot</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#faq">FAQ</a>
-            <a href="https://t.me/PulseTrackerSolPay_bot" class="cta-button" target="_blank">Subscribe Now!</a>
     </nav>
 
-
+    <div class="cobweb-overlay"></div>
 
     <section id="home">
         <div class="intro-container">
@@ -122,15 +128,26 @@
     </div>
 
     <section id="plans" class="plan-container animate-on-scroll">
-
-        <div class="launch-price-label">Launch Prices</div>
+        <span class="pumpkin-emoji">🎃</span>
+        <span class="candy-emoji">🍬</span>
+        <span class="bat-emoji">🦇</span>
+        <div class="launch-price-label">Halloween Prices</div>
         <div class="plan" id="plan-basic">
             <h2>Basic</h2>
             <h1>
-                <span class="old-price">$26</span> 
-                <span class="new-price">$19</span><span>/month</span>
-            </h1>
-            <ul>
+                <span class="price-display">
+                  <span class="usd-price">
+                    <span class="old-price">$26</span>
+                    <span class="new-price">$15</span><span class="price-unit">/month</span>
+                  </span>
+                  <span class="sol-price hidden">
+                    <span class="old-sol-price"></span><span class="currency">SOL</span>
+                    <span class="new-sol-price"></span><span class="currency">SOL</span><span class="price-unit">/month</span>
+                  </span>
+                </span>
+              </h1>
+
+              <ul>
                 <li>
                     <b class="feature-toggle">Unlimited Wallet Checks <span class="plus-icon">+</span></b>
                     <p class="feature-description">Check any wallet address as many times as you want, without limits.</p>
@@ -143,15 +160,26 @@
             <p>Perfect for beginners who need basic wallet analysis and community support.</p>
             <a href="https://t.me/PulseTrackerSolPay_bot" target="_blank" class="plan-button">Get Basic Access!</a>
         </div>
-    
+        
         <div class="plan" id="plan-standard">
-
             <h2>Pro</h2>
             <h1>
-                <span class="old-price">$34</span> 
-                <span class="new-price">$28</span><span>/month</span>
-            </h1>
+                <span class="price-display">
+                  <span class="usd-price">
+                    <span class="old-price">$34</span>
+                    <span class="new-price">$20</span><span class="price-unit">/month</span>
+                  </span>
+                  <span class="sol-price hidden">
+                    <span class="old-sol-price"></span><span class="currency">SOL</span>
+                    <span class="new-sol-price"></span><span class="currency">SOL</span><span class="price-unit">/month</span>
+                  </span>
+                </span>
+              </h1>
             <ul>
+                <li>
+                    <b class="feature-toggle">[NEW] Scan For Insider Wallets<span class="plus-icon">+</span></b>
+                    <p class="feature-description">Utilize the /insider command to scan any token on DEX Screener and identify potential insider wallets—those that initiated an initial price pump.</p>
+                </li>
                 <li>
                     <b class="feature-toggle">Analyze Up to 30 Days <span class="plus-icon">+</span></b>
                     <p class="feature-description">Customize your analysis from 1 to 30 days. Focus on recent activity or examine longer-term patterns to suit your specific research needs.</p>
@@ -172,15 +200,21 @@
             <p>Ideal for intermediate traders looking for detailed trade logs and token choice analysis.</p>
             <a href="https://t.me/PulseTrackerSolPay_bot" target="_blank" class="plan-button">Get Pro Access!</a>
         </div>
-    
+        
         <div class="plan" id="plan-premium">
-            
-
             <h2>Premium</h2>
             <h1>
-                <span class="old-price">$49</span> 
-                <span class="new-price">$37</span><span>/month</span>
-            </h1>
+                <span class="price-display">
+                  <span class="usd-price">
+                    <span class="old-price">$49</span>
+                    <span class="new-price">$29</span><span class="price-unit">/month</span>
+                  </span>
+                  <span class="sol-price hidden">
+                    <span class="old-sol-price"></span><span class="currency">SOL</span>
+                    <span class="new-sol-price"></span><span class="currency">SOL</span><span class="price-unit">/month</span>
+                  </span>
+                </span>
+              </h1>
             <ul>
                 <li>
                     <b class="feature-toggle">Daily Winning Wallets <span class="plus-icon">+</span></b>
@@ -198,30 +232,40 @@
             <ul>
                 <li class="small">Unlimited Wallet Checks</li>
                 <li class="small">Exclusive Telegram Group Access</li>
+                <li class="small">Scan For Insider Wallets</li>
                 <li class="small">Analyze Up to 30 Days</li>
                 <li class="small">Excel Trade History Report</li>
                 <li class="small">Token Quality Analysis</li>
             </ul>
-            <p>The ultimate package for advanced traders who want comprehensive insights and top trader analysis.</p>
+            <p>The ultimate package for advanced traders who want comprehensive insights and top trader analysis, Instant access to any upcoming updates.</p>
             <a href="https://t.me/PulseTrackerSolPay_bot" target="_blank" class="plan-button">Get Premium Access!</a>
         </div>
     </section>
-    
+
 <!-- Winning Wallets Section -->
 <section id="winning-wallets">
     <!-- Titles and Download Button -->
     <div class="titles-wallets-container">
-      <h1 class="wallets-titles animate-on-scroll" style="font-size: 32px;">Find Profitable Wallets</h1>
-      <div class="example-file-download animate-on-scroll">
-        <a href="PulseTrackerSol_daily_wallets.xlsx" download class="example-file-button">Download Example File</a>
-      </div>
+        <div class="text-container">
+            <h1 class="wallets-titles animate-on-scroll" style="font-size: 32px;">Find Profitable Wallets</h1>
+
+            <h3 class="sub-titles animate-on-scroll">Discover the most successful wallets in the blockchain space with Premium. Our winning wallets are actual, active wallets that you can copy trade from. These wallets are not just one-time pump-and-dump schemes with a single buy and multiple sells, but rather they are real accounts that actively trade multiple assets daily, risking their own capital.</h3>
+                    <!-- How It Works Section -->
+            <h2 class="wallets-titles animate-on-scroll" style="font-size: 24px; margin-top: 0px;">How It Works</h2>
+            <h3 class="sub-titles animate-on-scroll">By subscribing to our Premium service, you'll unlock access to our exclusive "Winning Wallets" Telegram group. This group provides insights into wallets that consistently achieve the highest ROI, PNL, and win rates. With daily updates, you'll stay ahead of the market by following the top performers.</h3>        
+            <div class="example-file-download animate-on-scroll">
+                <a href="PulseTrackerSol_daily_wallets.xlsx" download class="example-file-button">Download Example File</a>
+            </div>
+        </div>
+    <div class="wallets-video-container animate-on-scroll">
+            <video autoplay loop>
+                <source src="profitable_solana_wallets.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
-  
-    <h3 class="sub-titles animate-on-scroll">Discover the most successful wallets in the blockchain space with Premium. Our winning wallets are actual, active wallets that you can copy trade from. These wallets are not just one-time pump-and-dump schemes with a single buy and multiple sells, but rather they are real accounts that actively trade multiple assets daily, risking their own capital.</h3>
-  
-    <!-- How It Works Section -->
-    <h2 class="wallets-titles animate-on-scroll" style="font-size: 24px; margin-top: 0px;">How It Works</h2>
-    <h3 class="sub-titles animate-on-scroll">By subscribing to our Premium service, you'll unlock access to our exclusive "Winning Wallets" Telegram group. This group provides insights into wallets that consistently achieve the highest ROI, PNL, and win rates. With daily updates, you'll stay ahead of the market by following the top performers.</h3>    
+
+
     <table class="wallets-table animate-on-scroll">
         <thead>
             <tr>
@@ -239,7 +283,7 @@
                 <td>QiNvw...6ZN6</td>
                 <td>68.06%</td>
                 <td>44.98%</td>
-                <td>$1,674.82</td>
+                <td>\$1,674.82</td>
                 <td>52</td>
                 <td>69</td>
                 <td>31</td>
@@ -248,7 +292,7 @@
                 <td>3BPb5...HGvn</td>
                 <td>83.33%</td>
                 <td>91.98%</td>
-                <td>$552.34</td>
+                <td>\$552.34</td>
                 <td>13</td>
                 <td>12</td>
                 <td>12</td>
@@ -257,7 +301,7 @@
                 <td>G1Fba...6VxF</td>
                 <td>71.11%</td>
                 <td>42%</td>
-                <td>$1,007.98</td>
+                <td>\$1,007.98</td>
                 <td>29</td>
                 <td>37</td>
                 <td>18</td>
@@ -266,7 +310,7 @@
                 <td>6uS3F...hpga</td>
                 <td>75.62%</td>
                 <td>33%</td>
-                <td>$5,264.38</td>
+                <td>\$5,264.38</td>
                 <td>76</td>
                 <td>63</td>
                 <td>32</td>
@@ -275,7 +319,7 @@
                 <td>o55qN...bnEZA</td>
                 <td>80.12%</td>
                 <td>57.5%</td>
-                <td>$2,540.53</td>
+                <td>\$2,540.53</td>
                 <td>31</td>
                 <td>29</td>
                 <td>20</td>
@@ -284,54 +328,61 @@
                 <td>5wb9b...ZYJb</td>
                 <td>67.85%</td>
                 <td>95.35%</td>
-                <td>$3,021.04</td>
+                <td>\$3,021.04</td>
                 <td>15</td>
                 <td>18</td>
                 <td>13</td>
             </tr>
         </tbody>
     </table>
-    </section>
+</section>
 
 
-    <h1 class="titles animate-on-scroll">Bot Tools</h1>
-    <h3 class="sub-titles animate-on-scroll">Explore our advanced analysis tools for informed trading decisions.</h3>
-    <section id="bot-tools" class="animate-on-scroll">
-    <div class="tool-container">
-        <div class="tool-left-panel" id="tool-left-panel">
-            <!-- Tool buttons and content will be inserted here -->
-        </div>
-        <div class="tool-right-panel">
-            <div id="tool-video-container">
-                <!-- Video will be inserted here -->
-            </div>
+<h1 class="titles animate-on-scroll">Bot Tools</h1>
+<h3 class="sub-titles animate-on-scroll">Explore our advanced analysis tools for informed trading decisions.</h3>
+<section id="bot-tools" class="animate-on-scroll">
+<div class="tool-container">
+    <div class="tool-left-panel" id="tool-left-panel">
+        <!-- Tool buttons and content will be inserted here -->
+    </div>
+    <div class="tool-right-panel">
+        <div id="tool-video-container">
+            <!-- Video will be inserted here -->
         </div>
     </div>
+</div>
+</section>
+
+    <div class="referral-header-container">
+        <h1 class="titles animate-on-scroll">Referral Program</h1>
+        <div class="referral-code-download">
+            <a href="https://t.me/PulseTrackerSolPay_bot" target="_blank" class="referral-cta-button">Get Your Referral Code</a>
+        </div>
+        
+    </div>
+    <h3 class="sub-titles animate-on-scroll" style="margin-top: -5px;">Double the Rewards: You AND Your Friends Get 7 Extra Days!</h3>    
+
+    <section id="referral" class="animate-on-scroll">
+        
+        <div class="referral-content">
+            <div class="referral-text">
+                <p>Unlock an entire week of free PulseTracker access for both you and your friends! Our Referral Program is designed to extend your analysis power seamlessly.</p>
+                
+                <ul>
+                    <li><strong>Get Your Unique Referral Code:</strong> Simply message the Paybot within our platform to receive your personalized referral code instantly.</li>
+                    <li><strong>Simple Sharing:</strong> Spread your unique referral code to friends, colleagues, and fellow traders through social media, email, or direct messaging.</li>
+                    <li><strong>Doubled Rewards:</strong> When a friend subscribes using your referral code, both you and your friend receive an extra 7 days of PulseTracker access.</li>
+                    <li><strong>Easy Activation:</strong> Your friend enters the referral code at checkout, and the additional subscription time is applied automatically.</li>
+                    <li><strong>Unlimited Referrals:</strong> There's no limit to how many friends you can refer. The more you share, the more you and your friends benefit!</li>
+                </ul>
+                
+                <p>Why wait? Start sharing your unique referral code from the Paybot today and watch your PulseTracker subscription grow. Enhance your trading experience and help others do the same!</p>
+                
+
+            </div>
+        </div>
     </section>
 
-
-
-    <h1 class="titles animate-on-scroll">About PulseTracker</h1>
-    <h3 class="sub-titles animate-on-scroll">Maximize your trading potential with expert insights.</h3>
-    <section id="about" class="animate-on-scroll">
-        <h2>Introduction and Core Functionality</h2>
-        <p>PulseTracker is designed to help you find <strong>profitable</strong> wallets for copy trading. By identifying wallets with a <strong>successful</strong> trading history, it removes the guesswork from selecting tokens, offering you unparalleled insights into wallet performance.</p>
-        <p>By analyzing the key metrics of wallet <strong>performance</strong>, PulseTracker allows you to confidently follow wallets with <strong>strong</strong> trading attributes, enhancing your chances of making profitable trades.</p>
-    </section>
-    
-    <section id="about" class="animate-on-scroll">
-        <h2>Unique Features and Benefits</h2>
-        <p>PulseTracker stands out with its <strong>unique</strong> set of features, providing in-depth analysis and <strong>filtering</strong> trades that start and end within the same wallet. This ensures you see the full transaction history per token, avoiding skewed results from free token distributions.</p>
-        <p>With PulseTracker, you can identify wallets that are genuinely <strong>profitable</strong> in the real world, making it a <strong>reliable</strong> tool for copy trading and boosting your trading confidence.</p>
-    </section>
-    
-    <section id="about" class="animate-on-scroll">
-        <h2>Overall Value Proposition</h2>
-        <p>Beyond copy trading, PulseTracker serves as a guideline for identifying successful wallets that <strong>excel</strong> in trade timing. You don't have to blindly copy them; instead, use their <strong>strategies</strong> as a reference to inform your own trading decisions.</p>
-        <p>By leveraging the insights provided by PulseTracker, you can <strong>enhance</strong> your trading strategy, find the right tokens, and make <strong>informed</strong> trades in the competitive Solana market.</p>
-    </section>
-    
-    
 
 
 
@@ -385,6 +436,12 @@
                     <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
+                    <td>Search For Insider Wallets</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
                     <td>Scan Multiple Wallets at once</td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-times"></i></td>
@@ -406,27 +463,77 @@
         </table>
     </section>
     
+
+
+    <h1 class="titles animate-on-scroll">About PulseTracker</h1>
+    <h3 class="sub-titles animate-on-scroll">Maximize your trading potential with expert insights.</h3>
+    <section id="about" class="animate-on-scroll">
+        <h2>Introduction and Core Functionality</h2>
+        <p>PulseTracker is designed to help you find <strong>profitable</strong> wallets for copy trading. By identifying wallets with a <strong>successful</strong> trading history, it removes the guesswork from selecting tokens, offering you unparalleled insights into wallet performance.</p>
+        <p>By analyzing the key metrics of wallet <strong>performance</strong>, PulseTracker allows you to confidently follow wallets with <strong>strong</strong> trading attributes, enhancing your chances of making profitable trades.</p>
+    </section>
+    
+    <section id="about" class="animate-on-scroll">
+        <h2>Unique Features and Benefits</h2>
+        <p>PulseTracker stands out with its <strong>unique</strong> set of features, providing in-depth analysis and <strong>filtering</strong> trades that start and end within the same wallet. This ensures you see the full transaction history per token, avoiding skewed results from free token distributions.</p>
+        <p>With PulseTracker, you can identify wallets that are genuinely <strong>profitable</strong> in the real world, making it a <strong>reliable</strong> tool for copy trading and boosting your trading confidence.</p>
+    </section>
+    
+    <section id="about" class="animate-on-scroll">
+        <h2>Overall Value Proposition</h2>
+        <p>Beyond copy trading, PulseTracker serves as a guideline for identifying successful wallets that <strong>excel</strong> in trade timing. You don't have to blindly copy them; instead, use their <strong>strategies</strong> as a reference to inform your own trading decisions.</p>
+        <p>By leveraging the insights provided by PulseTracker, you can <strong>enhance</strong> your trading strategy, find the right tokens, and make <strong>informed</strong> trades in the competitive Solana market.</p>
+    </section>
+    
+    
     <h1 class="titles animate-on-scroll">How To Pay?</h1>
     <h3 class="sub-titles animate-on-scroll">Use our payment bot on Telegram to pay with Solana.</h3>
-    <section id="paybot" class="animate-on-scroll">
-        <div class="paybot-container">
-            <div class="paybot-left-panel" id="paybot-left-panel">
-                <div class="paybot-content active">
-                    <h2 class="paybot-step-title"></h2>
-                    <p class="paybot-step-description"></p>
-                </div>
-                <div class="paybot-button-container">
-                    <button class="paybot-btn paybot-btn-back" disabled>Back</button>
-                    <button class="paybot-btn paybot-btn-next">Next</button>
-                </div>
-            </div>
-            <div class="paybot-right-panel">
-                <div id="paybot-image-container">
-                    <img class="paybot-step-image" alt="Step illustration">
-                </div>
+    
+    <div class="payment-section animate-on-scroll">
+        <section id="paybot">
+            <video autoplay muted loop playsinline>
+                <source src="how_to_pay_for_pulsetrackersol.mp4" type="video/mp4">
+            </video>
+        </section>
+        
+        <div class="payment-info">
+            <h4>Payment Instructions</h4>
+            <ol>
+                <li>Open Telegram and start a chat with our paybot: <a href="https://t.me/PulseTrackerSolPay_bot">@PulseTrackerSolPay_bot</a></li>
+                <li>Choose your subscription tier</li>
+                <li>Select your subscription duration:
+                    <ul>
+                        <li>1 month - Standard pricing</li>
+                        <li>3 months - Save 5% with quarterly subscription</li>
+                        <li>6 months - Save 10% with semi-annual subscription</li>
+                        <li>12 months - Save 20% with annual subscription</li>
+                    </ul>
+                </li>
+                <li>Complete the payment:
+                    <ul>
+                        <li>You'll receive a specific SOL wallet address</li>
+                        <li>Send the exact SOL amount displayed to the provided wallet</li>
+                        <li>Send the transaction hash to <a href="https://t.me/PulseTrackerSolPay_bot">@PulseTrackerSolPay_bot</a> for verification</li>
+                    </ul>
+                </li>
+                <li>Access your subscription:
+                    <ul>
+                        <li>Upon confirmation, you'll receive access to <a href="https://t.me/PulseTrackerSol_bot">@PulseTrackerSol_bot</a></li>
+                        <li>You'll get exclusive links to join our premium chat groups</li>
+                    </ul>
+                </li>
+            </ol>
+            <div class="payment-note">
+                <p>💡 Important Notes:</p>
+                <ul>
+                    <li>Make sure to send the exact SOL amount requested</li>
+                    <li>Subscription begins immediately after payment verification</li>
+                    <li>For support, contact our team on Telegram</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+
     
     <h1 class="titles animate-on-scroll">Roadmap</h1>
     <h3 class="sub-titles animate-on-scroll">A comprehensive overview of our development milestones and timeline.</h3>
@@ -504,7 +611,7 @@
                 <div class="faq-item">
                     <div class="faq-question">How does the renewal process work?</div>
                     <div class="faq-answer">
-                        After the 30-day period, the renewal process is manual. You will need to purchase again to continue using the service on PayBot.
+                        After the 31-day period, the renewal process is manual. You will need to purchase again to continue using the service on PayBot.
                     </div>
                 </div>
                 <div class="faq-item">

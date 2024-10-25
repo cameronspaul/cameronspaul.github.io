@@ -108,6 +108,62 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+function fetchSolanaPrice() {
+  fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd')
+    .then(response => response.json())
+    .then(data => {
+      const solPrice = data.solana.usd;
+      updateSolPrices(solPrice);
+    })
+    .catch(error => console.error('Error fetching Solana price:', error));
+}
+
+function updateSolPrices(solPrice) {
+  const plans = [
+    { id: 'basic', usdPrice: 15, oldUsdPrice: 26 },
+    { id: 'standard', usdPrice: 20, oldUsdPrice: 35 },
+    { id: 'premium', usdPrice: 29, oldUsdPrice: 50 }
+  ];
+
+  plans.forEach(plan => {
+    const planElement = document.querySelector(`#plan-${plan.id}`);
+    const newSolPrice = (plan.usdPrice / solPrice).toFixed(3);
+    const oldSolPrice = (plan.oldUsdPrice / solPrice).toFixed(3);
+
+    planElement.querySelector('.new-sol-price').textContent = `${newSolPrice}`;
+    planElement.querySelector('.old-sol-price').textContent = `${oldSolPrice}`;
+  });
+}
+
+function togglePrice() {
+  const priceDisplays = document.querySelectorAll('.price-display');
+  
+  priceDisplays.forEach(display => {
+    const usdPrice = display.querySelector('.usd-price');
+    const solPrice = display.querySelector('.sol-price');
+    
+    usdPrice.classList.toggle('hidden');
+    solPrice.classList.toggle('hidden');
+    
+    if (usdPrice.classList.contains('hidden')) {
+      usdPrice.style.visibility = 'hidden';
+      solPrice.style.visibility = 'visible';
+    } else {
+      usdPrice.style.visibility = 'visible';
+      solPrice.style.visibility = 'hidden';
+    }
+  });
+}
+
+// Fetch Solana price and update prices on page load
+fetchSolanaPrice();
+
+// Toggle price every 4 seconds
+setInterval(togglePrice, 8000);
+
+// Refresh Solana price every 5 minutes
+setInterval(fetchSolanaPrice, 300000);
+
 document.addEventListener('DOMContentLoaded', function() {
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
@@ -213,57 +269,91 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 const toolPanels = [
-    {
-        title: "Wallet Analysis",
-        content: `With Pulse Tracker's wallet analysis, you can gain valuable data on a particular wallet, helping you discover successful wallets to copytrade and generate profits. Some of our features include:
-        <ul>
-            <li><strong>Win Rate:</strong> Measure the proportion of successful trades.</li>
-            <li><strong>ROI (Return on Investment):</strong> Assess profitability over time.</li>
-            <li><strong>Snipes:</strong> Identify precise and timely trades.</li>
-            <li><strong>Trade Duration:</strong> Analyze how long trades are held.</li>
-        </ul>`,
-        videoUrl: "walletanalysis.mp4"
-    },
-    {
-        title: "Multi-Wallet Analysis",
-        content: `Streamline your analysis with Multi-Wallet Analysis. Compare up to 10 wallets simultaneously to gain a holistic view of trading patterns and performance. This feature simplifies bulk analysis, allowing you to:
-        <ul>
-            <li><strong>Efficiently Compare Key Statistics:</strong> View and compare essential data across multiple wallets.</li>
-            <li><strong>Save Time:</strong> Conduct extensive analysis in a fraction of the time.</li>
-            <li><strong>Identify Trends:</strong> Spot common strategies and trends among different wallets.</li>
-        </ul>`,
-        videoUrl: "multiwallet.mp4"
-    },
-    {
-        title: "Top Trending Traders",
-        content: `Discover the most successful traders with our Top Trending Traders tool. By inputting a mint address, you can uncover the top 10 traders associated with it. Benefit from:
-        <ul>
-            <li><strong>Comprehensive Insights:</strong> Receive analysis similar to Multi-Wallet Analysis.</li>
-            <li><strong>Successful Trader Identification:</strong> Quickly identify and follow top performers.</li>
-            <li><strong>Enhanced Decision-Making:</strong> Make informed decisions by observing leading traders’ strategies.</li>
-        </ul>`,
-        videoUrl: "toptrending.mp4"
-    },
-    {
-        title: "Token Quality Analysis",
-        content: `Evaluate wallet performance to find tokens with high potential for appreciation. Token Quality Analysis helps you:
-        <ul>
-            <li><strong>Assess Token Selection:</strong> Identify wallets that excel in choosing tokens likely to increase in value.</li>
-            <li><strong>Follow Top Performers:</strong> Discover and emulate the strategies of high-performing wallets.</li>
-            <li><strong>Predict Future Value:</strong> Improve your investment strategy by analyzing successful token selections.</li>
-        </ul>`,
-        videoUrl: "tokenquality.mp4"
-    },
-    {
-        title: "Excel Sheet Data",
-        content: `Get unparalleled insights into wallet performance with our comprehensive Excel sheet data. With every single trade laid out in an easy-to-read format, you'll be able to:
-        <ul>
-          <li><strong>Uncover Trading Secrets:</strong> See the exact trades made by top-performing wallets, including profits and trade duration.</li>
+  {
+    "title": "📊 Wallet PNL Analyzer",
+    "content": `PulseTracker's Wallet PNL Analyzer revolutionizes copy trading by providing deep insights into wallet performance:
 
-          <li><strong>Find the Perfect Wallet:</strong> Use our data to identify the most profitable wallets and inform your investment strategy.</li>
-        </ul>`,
-        videoUrl: "excel.mp4"
-      }
+    <ul>
+        <li><strong>Win Rate & ROI:</strong> Identify consistently profitable wallets</li>
+        <li><strong>Transaction Analysis:</strong> Uncover successful trading patterns and frequencies</li>
+        <li><strong>Portfolio Diversity:</strong> Assess risk management through token distribution</li>
+        <li><strong>Trade Duration Metrics:</strong> Understand timing strategies for maximum gains</li>
+        <li><strong>Profit Breakdown:</strong> Analyze performance across various profit ranges</li>
+    </ul>
+
+    Leverage these metrics to pinpoint wallets that combine strong performance with replicable strategies, maximizing your copy trading success.`,
+    "videoUrl": "how_to_analyze_solana_wallet.mp4"
+  },
+  {
+    "title": "🕵️‍♂️ Insider Scan",
+    "content": `Our Insider Scan tool empowers you to detect potential insider trading activities:
+
+    <ul>
+        <li><strong>Token Lifecycle Analysis:</strong> Examine older tokens for suspicious price movements</li>
+        <li><strong>Pattern Recognition:</strong> Identify unusual pumps and dumps indicative of insider knowledge</li>
+        <li><strong>Wallet Behavior Tracking:</strong> Spot wallets profiting from unexpected market movements</li>
+        <li><strong>Fund Tracing:</strong> Follow the money trail to uncover potential insider networks</li>
+    </ul>
+
+    Stay ahead of the market by identifying and potentially profiting from insider activities, while exercising caution and thorough research.`,
+    "videoUrl": "how_to_find_insider_solana_wallets.mp4"
+  },
+  {
+    "title": "❤️‍🔥 DEX Top Traders",
+    "content": `Unlock the strategies of the most successful traders for any token:
+
+    <ul>
+        <li><strong>Easy Token Lookup:</strong> Quickly find mint addresses on DEX Screener</li>
+        <li><strong>Top 10 Analysis:</strong> Use "/top MINT_ADDRESS" to reveal the best performers</li>
+        <li><strong>In-depth Insights:</strong> Get comprehensive breakdowns of each top trader's strategy</li>
+        <li><strong>Strategy Replication:</strong> Learn and adapt winning approaches to your own trading</li>
+    </ul>
+
+    Elevate your trading game by following and learning from the market's top performers, tailoring proven strategies to your portfolio.`,
+    "videoUrl": "how_to_find_winning_wallets_dexscreener.mp4"
+  },
+  {
+    "title": "📜 Multi-Wallet",
+    "content": `Our Multi-Wallet Analysis tool revolutionizes your research process:
+
+    <ul>
+        <li><strong>Simultaneous Comparison:</strong> Analyze up to 10 wallets at once with "/list WALLET,WALLET,WALLET"</li>
+        <li><strong>Comprehensive Metrics:</strong> Compare key performance indicators across multiple traders</li>
+        <li><strong>Pattern Recognition:</strong> Identify common strategies among top performers</li>
+        <li><strong>Time-Efficient Research:</strong> Conduct extensive analysis in minutes, not hours</li>
+    </ul>
+
+    Make data-driven decisions by efficiently comparing and contrasting multiple trading strategies, helping you construct a winning portfolio.`,
+    "videoUrl": "how_to_analyze_mulitple_solana_wallets.mp4"
+  },
+  {
+    "title": "💎 Token Quality Analysis",
+    "content": `Discover high-potential tokens and evaluate wallet performance with our Token Quality Analysis:
+
+    <ul>
+        <li><strong>Success Metrics:</strong> Analyze token appreciation rates and ROI</li>
+        <li><strong>Market Cap Insights:</strong> Understand growth patterns from purchase to ATH</li>
+        <li><strong>Risk Assessment:</strong> Evaluate volatility and potential downsides</li>
+        <li><strong>Top Performers:</strong> Identify the most profitable tokens in each wallet</li>
+    </ul>
+
+    Use "/quality WALLET" to gain crucial insights, enabling you to spot promising tokens early and make informed investment decisions.`,
+    "videoUrl": "how_to_find_if_a_wallet_chooses_good_solana_tokens.mp4"
+  },
+  {
+    "title": "📝 Excel Sheet Data",
+    "content": `Our Excel Sheet Data provides unparalleled insights into trading strategies:
+
+    <ul>
+        <li><strong>Comprehensive Trade History:</strong> Access detailed records of every transaction</li>
+        <li><strong>Profit Analysis:</strong> Examine exact profit margins and entry/exit points</li>
+        <li><strong>Strategy Identification:</strong> Uncover patterns in successful trades</li>
+        <li><strong>Performance Tracking:</strong> Monitor long-term wallet performance and consistency</li>
+    </ul>
+
+    Leverage this data to reverse-engineer successful strategies, optimize your own approach, and make data-driven decisions in the dynamic crypto market.`,
+    "videoUrl": "get_an_excel_download_full_of_solana_trade_data.mp4"
+  }
 ];
 
 function createToolPanels() {
@@ -349,71 +439,27 @@ window.addEventListener('resize', () => {
 });
 
 
-const steps = [
-  {
-    title: "Step 1: Start the Payment Bot",
-    description: "Open Telegram and search for @PulseTrackerSolPay_bot. Start a chat with the bot. Send the /start command to initiate the subscription process.",
-    image: "payment1.png"
-  },
-  {
-    title: "Step 2: Choose Your Subscription Tier",
-    description: "Select from one of our three tiers: Basic Plan, Standard Plan, or Premium Plan. Each tier offers additional features and benefits.",
-    image: "payment2.png"
-  },
-  {
-    title: "Step 3: Select Subscription Duration",
-    description: "Choose your preferred subscription length: 1 Month (full price), 3 Months (5% discount), 6 Months (10% discount), or 12 Months (20% discount).",
-    image: "payment3.png"
-  },
-  {
-    title: "Step 4: Make the Payment",
-    description: "The bot will provide you with the exact SOL amount to send and the wallet address for payment. Copy the SOL amount and wallet address, then use your Solana wallet to send the exact SOL amount to the provided address.",
-    image: "payment4.png"
-  },
-  {
-    title: "Step 5: Confirm Your Transaction",
-    description: "After sending the payment, copy your transaction signature and paste it into the chat with the payment bot. The bot will verify your payment.",
-    image: "payment5.png"
-  },
-  {
-    title: "Step 6: Access Your Subscription",
-    description: "Once your payment is confirmed, you'll receive a confirmation message and your subscription will be activated immediately. You can now access all features of your chosen tier through the @PulseTrackerSol_bot bot.",
-    image: "payment6.png"
-  }
-];
 
-let currentStep = 0;
-
-const stepTitle = document.querySelector('.paybot-step-title');
-const stepDescription = document.querySelector('.paybot-step-description');
-const stepImage = document.querySelector('.paybot-step-image');
-const backBtn = document.querySelector('.paybot-btn-back');
-const nextBtn = document.querySelector('.paybot-btn-next');
-
-function updateStep() {
-  const step = steps[currentStep];
-  stepTitle.textContent = step.title;
-  stepDescription.textContent = step.description;
-  stepImage.src = step.image;
-  stepImage.alt = `Step ${currentStep + 1} illustration`;
-  
-  backBtn.disabled = currentStep === 0;
-  nextBtn.disabled = currentStep === steps.length - 1;
+// Set the date we're counting down to (e.g., November 5, 2024 23:59:59)
+var countDownDate = new Date("Nov 8, 2024 23:59:59").getTime();
+function padNumber(num) {
+    return num.toString().padStart(2, '0');
 }
-
-backBtn.addEventListener('click', () => {
-  if (currentStep > 0) {
-    currentStep--;
-    updateStep();
-  }
-});
-
-nextBtn.addEventListener('click', () => {
-  if (currentStep < steps.length - 1) {
-    currentStep++;
-    updateStep();
-  }
-});
-
-// Initialize the first step
-updateStep();
+function updateCountdown() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+    } else {
+        document.getElementById("countdown").innerHTML = `Ends in: <span>${padNumber(days)}</span>d <span>${padNumber(hours)}</span>h <span>${padNumber(minutes)}</span>m <span>${padNumber(seconds)}</span>s`;
+    }
+}
+// Update the countdown every 1 second
+var x = setInterval(updateCountdown, 1000);
+// Initialize the countdown immediately
+updateCountdown();

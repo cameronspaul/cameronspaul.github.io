@@ -78,7 +78,7 @@ header {
     padding: 1rem 0;
     width: auto;
     z-index: 1000;
-
+    margin-top: 50px;
     animation:
         fadeIn 0.4s ease-in-out 0.05s both,
         headerAnimation 15s ease infinite;
@@ -371,14 +371,14 @@ nav ul li a:active {
     }
 }
 
-/* Style for the phone image container */
+/* Style for the phone image container transform: translateY(-111%);*/
 .phone-container {
     animation: fadeIn 0.48s ease-in-out 0.43s both;
 
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translateY(-111%);
+    transform: translateY(-98%);
   }
   
   .phone-image {
@@ -433,25 +433,63 @@ nav ul li a:active {
     color: #333;
 }
 
-.plan h1 .new-price {
-    font-size: 36px;
-    color: #333;
+
+
+
+
+.plan h1 .new-price,
+.plan h1 .sol-price {
+  font-size: 36px;
+  color: #333;
 }
 
-.plan h1 .old-price {
-    font-size: 26px;
-    color: #888;
-    text-decoration: line-through;
-    font-weight: 100;
-    font-weight: bold;
-
-
+.plan h1 .old-price,
+.plan h1 .old-sol-price {
+  font-size: 26px;
+  color: #888;
+  text-decoration: line-through;
+  font-weight: 500;
 }
 
-.plan h1 span {
-    font-size: 16px;
-    color: #888;
+.plan h1 .price-unit {
+  font-size: 16px;
+  color: #888;
+  margin-left: 4px;
 }
+
+.plan h1 .currency {
+  font-size: 12px;
+  color: #888;
+  margin-left: 2px;
+}
+
+
+.price-display {
+    position: relative;
+    height: 1.5em; /* Adjust this value based on your font size */
+  }
+  
+  .price-display .usd-price,
+  .price-display .sol-price {
+    transition: opacity 0.5s linear;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .price-display .hidden {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .price-display .visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+
 
 .plan ul {
     list-style-type: none;
@@ -535,7 +573,7 @@ nav ul li a:active {
     text-decoration: line-through;
 }
 
-
+/* 
 .launch-price-label {
     position: absolute;
     top: -20px;
@@ -553,6 +591,16 @@ nav ul li a:active {
 
 .launch-price-label::after {
     content: "Until Nov 1st!";
+    display: block;
+    font-size: 14px; 
+    font-weight: 500; 
+    margin-top: 2px;
+
+*/
+
+
+.launch-price-label::after {
+    content: "Until Nov 5th!";
     display: block;
     font-size: 14px; /* Reduced font size */
     font-weight: 500; /* Set a lighter font weight */
@@ -591,6 +639,8 @@ nav ul li a:active {
        padding: 8px 16px;
      }
 
+
+/* 
     .launch-price-label {
         position: absolute;
         top: -20px;
@@ -609,23 +659,12 @@ nav ul li a:active {
     .launch-price-label::after {
         content: "Until Nov 1st!";
         display: block;
-        font-size: 14px; /* Reduced font size */
-        font-weight: 500; /* Set a lighter font weight */
+        font-size: 14px; 
+        font-weight: 500; 
         margin-top: 2px;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+ */
 
 
 
@@ -641,7 +680,7 @@ nav ul li a:active {
 
 .tool-left-panel {
     background: linear-gradient(to top, #dfdfdf, #ffffff);
-    min-width: 50%;
+    min-width: 68%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -665,7 +704,7 @@ nav ul li a:active {
 .tool-button {
     display: block;
     width: auto;
-    padding: 18px;
+    padding: 13px;
     margin: 0 0 10px 0;
     background: #fff;
     color: #333;
@@ -677,6 +716,8 @@ nav ul li a:active {
     font-weight: bold;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .tool-button.active {
     border-radius: 15px 15px 0 0;
@@ -750,6 +791,83 @@ nav ul li a:active {
     .mobile-video-container video {
         width: 100%;
         border-radius: 15px;
+    }
+}
+
+
+
+/* Container for the referral section */
+#referral {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox layout for content */
+.referral-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Text styling */
+.referral-text {
+    flex: 1;
+}
+
+.referral-text p {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+.referral-text ul {
+    margin-bottom: 15px;
+}
+
+.referral-text li {
+    margin-bottom: 10px;
+    line-height: 1.5; /* or any other value you prefer */
+
+}
+
+.referral-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+
+
+.referral-cta-button {
+    background: #12ae95;
+    margin-top: 60px;
+    background-size: 200% 100%;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Ensures the button respects padding and border-radius */
+}
+
+.referral-cta-button:hover {
+    background: #0b7968;
+}
+
+
+@media (max-width: 768px) {
+    .referral-content {
+        flex-direction: column;
+    }
+    
+    .referral-image {
+        order: -1;
+        margin-bottom: 30px;
     }
 }
 
@@ -888,111 +1006,102 @@ nav ul li a:active {
         background-size: 150% 150%; /* Reduce gradient size for mobile */
         background-position: 0% 50%; /* Initial background position */
     }
+
 }
 
-.paybot-container {
+.payment-section {
     display: flex;
-    width: 100%;
-    box-sizing: border-box;
 }
 
-.paybot-left-panel {
+#paybot video {
+    border-radius: 15px;
+    width: 85%; /* Adjust width to make the video more visible */
+}
+
+.payment-info {
+    font-size: 1rem;
+    font-weight: 500; /* Use a bolder font weight */
+    flex: 1;
     background: linear-gradient(to top, #dfdfdf, #ffffff);
-    min-width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 20px;
-    border-radius: 15px;
-    width: calc(50% - 10px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    margin-right: 50px;
-    position: relative;
-    height: 300px;
-}
-
-.paybot-right-panel {
-    width: 50%;
-}
-
-.paybot-button {
-    display: block;
-    width: auto;
     padding: 18px;
-    margin: 0 0 10px 0;
-    background: #fff;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    min-width: 700px;
+    max-height: 759px;
+    margin-left: -40px;
+}
+
+.payment-info h4 {
+    margin: 0 0 10px;
     color: #333;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    border-radius: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.paybot-button-container {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    display: flex;
-    justify-content: space-between;
+.payment-info ol {
+    margin-left: 20px;
+    padding-left: 0;
+    color: #333;
 }
 
-.paybot-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background: #12ae95;
-    color: #fff;
-    text-decoration: none;
-    text-align: center;
-    display: block;
+.payment-info li {
+    margin-top: 8px;
+    margin-bottom: 15px;
+    line-height: 1.5;
 }
 
-.paybot-btn:hover {
-    background: #0b7968;
+.payment-note {
+    margin-top: 20px;
+    padding: 15px 0;
+    color: #222;
+    line-height: 1.4;
 }
 
-.paybot-btn:disabled {
-    background-color: #666;
-    color: white;
-    cursor: not-allowed;
-}
-
-#paybot-image-container img {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-}
 
 @media screen and (max-width: 768px) {
-    .paybot-container {
+    .payment-section {
         flex-direction: column;
     }
 
-    .paybot-left-panel {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 20px;
-        height: auto;
-        min-height: 300px;
-    }
-
-    .paybot-right-panel {
+    #paybot video {
         width: 100%;
     }
 
-    .paybot-button-container {
-        position: static;
-        margin-top: 20px;
+    .payment-info {
+        display: none;
     }
 }
 
+
+
+
+.titles-wallets-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.text-container {
+    flex: 1;
+    min-width: 700px;
+}
+
+.wallets-video-container {
+    display: flex;
+    justify-content: center; /* Centers the video horizontally */
+    align-items: center; /* Centers the video vertically */
+    flex: 1;
+    margin-top: 70px;
+    margin-bottom: 40px;
+
+    border-radius: 15px;
+    overflow: hidden; /* This is important to make border-radius work */
+}
+
+.wallets-video-container video {
+    width: 55%;
+    border-radius: 15px;
+    object-fit: cover;
+}
 
 .wallets-table {
     width: 100%;
@@ -1001,53 +1110,29 @@ nav ul li a:active {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     table-layout: fixed;
     padding: 30px;
-  }
-  
-  .wallets-table th, .wallets-table td {
+}
+
+.wallets-table th, .wallets-table td {
     text-align: center;
     vertical-align: middle;
     padding: 10px;
-  }
-  
-  .wallets-table thead th {
+}
+
+.wallets-table thead th {
     font-weight: 600;
     font-size: 0.9em;
-  }
-  
-  .titles-wallets-container {
-    display: flex;
-    align-items: center;
-  }
-  
+}
+
 .wallets-titles {
     background-clip: text;
     color: #fff;
     flex: 1;
     margin-top: 60px;
     margin-bottom: 0px;
-  }
-  
-.main-sub-titles {
-    background-clip: text;
-    color: #fff; /* Hide the text color */
-    font-weight: normal;
 }
 
-.sub-sub-titles {
-    font-weight: normal;
 
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-.example-file-download {
-    flex-shrink: 0;
-  }
-  
-  .example-file-button {
+.example-file-button {
     background: #12ae95;
     background-size: 200% 100%;
     color: #fff;
@@ -1055,58 +1140,51 @@ nav ul li a:active {
     text-decoration: none;
     border-radius: 10px;
     transition: all 0.3s ease;
-    display: inline-block;
-    margin-top: 60px;
-  }
-  
-  .example-file-button:hover {
+    display: block; /* Change to block */
+    width: 230px; /* Add a fixed width */
+    margin: 0 auto; /* Add horizontal centering */
+    text-align: center; /* Add text centering */
+}
+
+.example-file-button:hover {
     background: #0b7968;
-  }
-  
-  @media (max-width: 600px) {
-    .wallet-subtitle-row {
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: -20px;
+}
+
+
+@media (max-width: 768px) {
+    .titles-wallets-container {
+        flex-direction: column;
+        align-items: center;
     }
-  
-    .sub-titles-download {
-      margin-right: 0;
-      margin-bottom: 10px;
+
+    .text-container {
+        min-width: 100%;
     }
-  
-    .example-file-download {
-      margin-top: 10px;
-      margin-right: 10px;
-      width: 30%;
-      text-align: center;
+
+    .wallets-video-container {
+        margin-top: 40px;
+        margin-bottom: 20px;
     }
-  
-    .example-file-button {
-      width: auto;
-      padding: 10px 15px;
+
+    .wallets-video-container video {
+        width: 100%;
     }
-  
+
     .wallets-table {
-      font-size: 12px;
-      padding: 0px;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      white-space: nowrap;
+        display: none; /* Hide the table on smaller screens */
     }
-  
-    .wallets-table thead th {
-      font-weight: 600;
-      font-size: 0.8em;
-      padding: 10px;
-    }
-  
+
     .wallets-table th, .wallets-table td {
-      padding: 6px 4px;
+        padding: 8px;
     }
-    
-  }
+
+    .example-file-button {
+        width: 100%;
+        max-width: 230px;
+    }
+}
+
+
 
 
 .roadmap-wrapper {
@@ -1324,5 +1402,155 @@ footer {
         margin-top: 20px; /* Add some space between content and video */
     }
 
+
+}
+
+.cobweb-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('cobweb.png');
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.2; /* Adjust this value to make the overlay more or less transparent */
+}
+
+.halloween-sale-banner {
+    animation: fadeIn 0.2s ease-in-out 0.25s both;
+    background-color: #fa6b3b;
+    color: #000000;
+    text-align: center;
+    padding: 15px 0;
+    font-weight: bold;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.countdown {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.countdown span {
+    display: inline-block;
+    width: 1.9ch;
+    text-align: right;
+}
+
+.launch-price-label {
+    position: absolute;
+    top: -20px;
+    right: -50px;
+    background: #fa6b3b;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    transform-style: preserve-3d;
+    -webkit-font-smoothing: antialiased;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.pumpkin-emoji {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    font-size: 80px;
+    transform: rotate(-10deg);
+    z-index: 9999; /* Ensures it's on top of everything */
+    opacity: 1; /* Prevents transparency */
+}
+
+.candy-emoji {
+    position: absolute;
+    top: 580px;
+    left: -50px;
+    font-size: 80px;
+    transform: rotate(-10deg);
+    z-index: 9999; /* Ensures it's on top of everything */
+    opacity: 1; /* Prevents transparency */
+}
+
+.bat-emoji {
+    position: absolute;
+    top: 570px;
+    left: 1090px;
+    font-size: 80px;
+    transform: rotate(10deg);
+    z-index: 9999; /* Ensures it's on top of everything */
+    opacity: 1; /* Prevents transparency */
+}
+
+@media (max-width: 768px) {
+    .pumpkin-emoji,
+    .candy-emoji,
+    .bat-emoji {
+      display: none; /* Hides the emojis on mobile */
+    }
+
+    header {
+        font-size: larger;
+        color: #fff;
+        padding: 1rem 0;
+        width: auto;
+        z-index: 1000;
+        margin-top: 50px;
+        animation:
+            fadeIn 0.4s ease-in-out 0.05s both,
+            headerAnimation 15s ease infinite;
+        background-size: 200% 200%;
+    }
+     
+    
+    .launch-price-label {
+        position: absolute;
+        top: -20px;
+        right: -10px;
+        background: #fa6b3b;
+        color: #fff;
+        padding: 8px 10px;
+        border-radius: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        transform-style: preserve-3d;
+        -webkit-font-smoothing: antialiased;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .launch-price-label::after {
+        content: "Until Nov 5th!";
+        display: block;
+        font-size: 14px; 
+        font-weight: 500; 
+        margin-top: 2px;
+    }
+
+    .cobweb-overlay {
+        position: fixed;
+        top: 0;
+        right: 1000px;
+        width: 100%;
+        height: 100%;
+        background-image: url('cobweb.png');
+        background-size: cover;
+        background-position: 10%; /* Adjust this for your desired offset */
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.2; /* Adjust this value to make the overlay more or less transparent */
+    }
 
 }

@@ -120,7 +120,7 @@ function fetchSolanaPrice() {
 
 function updateSolPrices(solPrice) {
   const plans = [
-    { id: 'basic', usdPrice: 19},
+    { id: 'basic', usdPrice: 15},
     { id: 'standard', usdPrice: 27},
     { id: 'premium', usdPrice: 39}
   ];

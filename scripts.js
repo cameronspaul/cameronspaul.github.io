@@ -120,18 +120,16 @@ function fetchSolanaPrice() {
 
 function updateSolPrices(solPrice) {
   const plans = [
-    { id: 'basic', usdPrice: 15, oldUsdPrice: 26 },
-    { id: 'standard', usdPrice: 20, oldUsdPrice: 35 },
-    { id: 'premium', usdPrice: 29, oldUsdPrice: 50 }
+    { id: 'basic', usdPrice: 19},
+    { id: 'standard', usdPrice: 27},
+    { id: 'premium', usdPrice: 39}
   ];
 
   plans.forEach(plan => {
     const planElement = document.querySelector(`#plan-${plan.id}`);
     const newSolPrice = (plan.usdPrice / solPrice).toFixed(3);
-    const oldSolPrice = (plan.oldUsdPrice / solPrice).toFixed(3);
 
     planElement.querySelector('.new-sol-price').textContent = `${newSolPrice}`;
-    planElement.querySelector('.old-sol-price').textContent = `${oldSolPrice}`;
   });
 }
 
@@ -438,28 +436,3 @@ window.addEventListener('resize', () => {
   }
 });
 
-
-
-// Set the date we're counting down to (e.g., November 5, 2024 23:59:59)
-var countDownDate = new Date("Nov 8, 2024 23:59:59").getTime();
-function padNumber(num) {
-    return num.toString().padStart(2, '0');
-}
-function updateCountdown() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "EXPIRED";
-    } else {
-        document.getElementById("countdown").innerHTML = `Ends in: <span>${padNumber(days)}</span>d <span>${padNumber(hours)}</span>h <span>${padNumber(minutes)}</span>m <span>${padNumber(seconds)}</span>s`;
-    }
-}
-// Update the countdown every 1 second
-var x = setInterval(updateCountdown, 1000);
-// Initialize the countdown immediately
-updateCountdown();

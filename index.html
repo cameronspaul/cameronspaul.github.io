@@ -51,7 +51,109 @@
   gtag('config', 'G-C9X927K9E2');
 </script>
 
+<style>
+    #snowfall-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: transparent;
+    }
+</style>
+</head>
 <body>
+<canvas id="snowfall-canvas"></canvas>
+
+<script>
+
+class Snowflake {
+    constructor(canvas, initialYOffset = 0) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.reset(-initialYOffset);
+    }
+
+    reset(initialY = -10) {
+        this.x = Math.random() * this.canvas.width;
+        this.y = initialY; // Allow for a staggered start
+        this.radius = Math.random() * 2 + 0.5;
+        this.speed = Math.random() * 1 + 0.3;
+        this.opacity = Math.random() * 0.6 + 0.2;
+        this.wiggleX = Math.random() * 1;
+        this.wiggleSpeed = Math.random() * 0.02 + 0.005;
+    }
+
+    fall() {
+        this.y += this.speed;
+        this.x += Math.sin(this.y * this.wiggleSpeed) * this.wiggleX;
+
+        if (this.y > this.canvas.height) {
+            this.reset();
+        }
+    }
+
+    draw() {
+        this.ctx.beginPath();
+        this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        this.ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        this.ctx.fill();
+    }
+}
+
+class SnowfallEffect {
+    constructor(canvas, numSnowflakes = 200) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.snowflakes = [];
+
+        this.resizeCanvas();
+        window.addEventListener('resize', () => this.resizeCanvas());
+
+        // Create snowflakes with staggered initial Y offsets
+        for (let i = 0; i < numSnowflakes; i++) {
+            const initialYOffset = Math.random() * this.canvas.height;
+            this.snowflakes.push(new Snowflake(canvas, initialYOffset));
+        }
+
+        this.animate();
+    }
+
+    resizeCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+    }
+
+    animate() {
+        // Clear with transparent background
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.snowflakes.forEach(snowflake => {
+            snowflake.fall();
+            snowflake.draw();
+        });
+
+        requestAnimationFrame(() => this.animate());
+    }
+}
+
+// Initialize snowfall when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('snowfall-canvas');
+    new SnowfallEffect(canvas);
+});
+
+
+
+</script>
+
+<body>
+
+    <div class="christmas-sale-banner">
+        <span class="sale-text">🎅 Christmas Sale: 30% Off All Tiers! 🎅</span>
+        <div class="countdown" id="countdown"></div>
+    </div>
 
     <header>
         <div class="header-content">
@@ -120,20 +222,25 @@
     <div class="phone-container">
         <img src="phone.png" alt="Phone" class="phone-image">
     </div>
-
     <section id="plans" class="plan-container animate-on-scroll">
+        <span class="pumpkin-emoji">🎄</span>
+        <span class="candy-emoji">☃️</span>
+        <span class="bat-emoji">🎁</span>
+        <div class="launch-price-label">
+            <span>Christmas Prices</span>
+            <span class="date-label">Until Jan 3rd!</span>
+        </div>
 
-        <!-- <div class="launch-price-label">Halloween Prices</div> -->
         <div class="plan" id="plan-basic">
             <h2>Basic</h2>
             <h1>
                 <span class="price-display">
                   <span class="usd-price">
-                    <!-- <span class="old-price">\$26</span> -->
-                    <span class="new-price">$15</span><span class="price-unit">/month</span>
+                    <span class="old-price">$15</span>
+                    <span class="new-price">$11</span><span class="price-unit">/month</span>
                   </span>
                   <span class="sol-price hidden">
-                    <!-- <span class="old-sol-price"></span><span class="currency">SOL</span> -->
+                    <span class="old-sol-price"></span><span class="currency">SOL</span>
                     <span class="new-sol-price"></span><span class="currency">SOL</span><span class="price-unit">/month</span>
                   </span>
                 </span>
@@ -158,18 +265,18 @@
             <h1>
                 <span class="price-display">
                   <span class="usd-price">
-                    <!-- <span class="old-price">\$34</span> -->
-                    <span class="new-price">$27</span><span class="price-unit">/month</span>
+                    <span class="old-price">$27</span>
+                    <span class="new-price">$19</span><span class="price-unit">/month</span>
                   </span>
                   <span class="sol-price hidden">
-                    <!-- <span class="old-sol-price"></span><span class="currency">SOL</span> -->
+                    <span class="old-sol-price"></span><span class="currency">SOL</span>
                     <span class="new-sol-price"></span><span class="currency">SOL</span><span class="price-unit">/month</span>
                   </span>
                 </span>
               </h1>
             <ul>
                 <li>
-                    <b class="feature-toggle">[NEW] Scan For Insider Wallets<span class="plus-icon">+</span></b>
+                    <b class="feature-toggle">Scan For Insider Wallets<span class="plus-icon">+</span></b>
                     <p class="feature-description">Utilize the /insider command to scan any token on DEX Screener and identify potential insider wallets—those that initiated an initial price pump.</p>
                 </li>
                 <li>
@@ -198,21 +305,25 @@
             <h1>
                 <span class="price-display">
                   <span class="usd-price">
-                    <!-- <span class="old-price">\$49</span> -->
-                    <span class="new-price">$39</span><span class="price-unit">/month</span>
+                    <span class="old-price">$39</span>
+                    <span class="new-price">$28</span><span class="price-unit">/month</span>
                   </span>
                   <span class="sol-price hidden">
-                    <!-- <span class="old-sol-price"></span><span class="currency">SOL</span> -->
+                    <span class="old-sol-price"></span><span class="currency">SOL</span>
                     <span class="new-sol-price"></span><span class="currency">SOL</span><span class="price-unit">/month</span>
                   </span>
                 </span>
               </h1>
             <ul>
                 <li>
-                    <b class="feature-toggle">Daily Winning Wallets <span class="plus-icon">+</span></b>
+                    <b class="feature-toggle">Daily Winning Wallets<span class="plus-icon">+</span></b>
                     <p class="feature-description">Gain exclusive access to our private announcement group for daily XLSX files detailing top-performing wallets, helping you make informed decisions.</p>
                 </li>
                 <li>
+                    <b class="feature-toggle">Filter Through 1000s of Wallets<span class="plus-icon">+</span></b>
+                    <p class="feature-description">Easily apply advanced filters to narrow down wallets based on specific criteria such as ROI, PNL, win rate, or trading activity. This feature helps you focus on the most relevant wallets for your strategy.</p>
+                </li>
+                    <li>
                     <b class="feature-toggle">Scan Multiple Wallets at once <span class="plus-icon">+</span></b>
                     <p class="feature-description">Use the /list command to analyze up to 10 wallets simultaneously, enabling efficient comparison across multiple traders.</p>
                 </li>
@@ -445,6 +556,12 @@
                     <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
+                    <td>Filter Through 1000s of Wallets</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
                     <td>Daily Winning Wallets Identified By Us</td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-times"></i></td>
@@ -541,16 +658,12 @@
                 <p>Official launch of PulseTracker with tiered access options, offering a range of features and tools to cater to different types of traders and investors.</p>
               </div>
               <div class="phase">
-                <h2>Q3 2024</h2>
-                <p>Release of the $PULSE token, a crucial step in creating a sustainable ecosystem and rewarding our community for their continued support and participation.</p>
-              </div>
-              <div class="phase">
-                <h2>Q4 2024</h2>
+                <h2>Q1 2025</h2>
                 <p>Introducing the Wallet Notification Bot, a game-changing feature that enables users to manage multiple wallets and receive real-time notifications for every transaction, including buys, sells, transfers, and burns.</p>
               </div>
               <div class="phase">
-                <h2>Q1 2025</h2>
-                <p>Expanding our reach with the PulseTrackerEth bot, designed exclusively for in-depth analysis of Ethereum wallets, further solidifying our position as a leading blockchain analytics platform.</p>
+                <h2>Q2 2025</h2>
+                <p>Launch of the API, providing seamless integration for third-party applications to access wallet data, transaction histories, and real-time alerts, empowering users and developers to create tailored solutions.</p>
               </div>
             </div>
             <div class="progress-bar">

@@ -120,16 +120,18 @@ function fetchSolanaPrice() {
 
 function updateSolPrices(solPrice) {
   const plans = [
-    { id: 'basic', usdPrice: 15},
-    { id: 'standard', usdPrice: 27},
-    { id: 'premium', usdPrice: 39}
+    { id: 'basic', usdPrice: 11, oldUsdPrice: 15 },
+    { id: 'standard', usdPrice: 19, oldUsdPrice: 27 },
+    { id: 'premium', usdPrice: 28, oldUsdPrice: 39 }
   ];
 
   plans.forEach(plan => {
     const planElement = document.querySelector(`#plan-${plan.id}`);
     const newSolPrice = (plan.usdPrice / solPrice).toFixed(3);
+    const oldSolPrice = (plan.oldUsdPrice / solPrice).toFixed(3);
 
     planElement.querySelector('.new-sol-price').textContent = `${newSolPrice}`;
+    planElement.querySelector('.old-sol-price').textContent = `${oldSolPrice}`;
   });
 }
 
@@ -253,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isElementInViewport(roadmapContainer) && !roadmapContainer.classList.contains('visible')) {
             roadmapContainer.classList.add('visible');
             setTimeout(() => {
-                animateProgressBar(2000, 31); // 2000ms duration, 25% target width
+                animateProgressBar(2000, 44); // 2000ms duration, 25% target width
             }, 500);
         }
     }
@@ -282,6 +284,22 @@ const toolPanels = [
     Leverage these metrics to pinpoint wallets that combine strong performance with replicable strategies, maximizing your copy trading success.`,
     "videoUrl": "how_to_analyze_solana_wallet.mp4"
   },
+
+  {
+    "title": "✏️ Filter 1000s of Wallets",
+    "content": `PulseTracker's Filter Tool streamlines your search through thousands of analyzed wallets daily:
+
+    <ul>
+        <li><strong>Performance Filters:</strong> Sort by win rate percentages and total ROI to find top-performing wallets</li>
+        <li><strong>PNL Range:</strong> Filter wallets by profit ranges from \$100 to \$1M+ to match your trading scale</li>
+        <li><strong>Trading Activity:</strong> Narrow down by transaction frequency and volume to find active traders</li>
+        <li><strong>Time Periods:</strong> Focus on recent success with customizable timeframe filters</li>
+        <li><strong>Investment Size:</strong> Filter by average position size to find traders matching your capital level</li>
+    </ul>
+
+    Transform vast amounts of wallet data into actionable insights by quickly identifying traders that match your specific strategy and risk preferences.`,
+    "videoUrl": "how_to_use_filters_for_solana_wallets.mp4"
+  } ,
   {
     "title": "🕵️‍♂️ Insider Scan",
     "content": `Our Insider Scan tool empowers you to detect potential insider trading activities:
@@ -436,3 +454,26 @@ window.addEventListener('resize', () => {
   }
 });
 
+// Set the date we're counting down to (e.g., November 5, 2024 23:59:59)
+var countDownDate = new Date("Jan 2, 2025 23:59:59").getTime();
+function padNumber(num) {
+    return num.toString().padStart(2, '0');
+}
+function updateCountdown() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+    } else {
+        document.getElementById("countdown").innerHTML = `Ends in: <span>${padNumber(days)}</span>d <span>${padNumber(hours)}</span>h <span>${padNumber(minutes)}</span>m <span>${padNumber(seconds)}</span>s`;
+    }
+}
+// Update the countdown every 1 second
+var x = setInterval(updateCountdown, 1000);
+// Initialize the countdown immediately
+updateCountdown();

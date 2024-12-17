@@ -1463,7 +1463,7 @@ footer {
 
 .candy-emoji {
     position: absolute;
-    top: 570px;
+    top: 600px;
     left: -50px;
     font-size: 80px;
     transform: rotate(-10deg);
@@ -1473,7 +1473,7 @@ footer {
 
 .bat-emoji {
     position: absolute;
-    top: 570px;
+    top: 600px;
     left: 1100px;
     font-size: 80px;
     transform: rotate(10deg);
